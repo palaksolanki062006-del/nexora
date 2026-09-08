@@ -1,4 +1,4 @@
-import React, { useEffect } from 'https://esm.sh/react@18.2.0';
+import React, { useEffect } from 'react';
 
 export function Modal({ isOpen, onClose, title, subtitle, children, maxWidth = "max-w-2xl" }) {
   useEffect(() => {

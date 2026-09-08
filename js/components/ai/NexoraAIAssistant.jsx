@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'https://esm.sh/react@18.2.0';
+import React, { useState, useRef, useEffect } from 'react';
 import { useApp } from '../../context/AppContext.jsx';
 import api from '../../services/api.js';
 

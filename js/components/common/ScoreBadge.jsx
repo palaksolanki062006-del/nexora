@@ -1,4 +1,4 @@
-import React from 'https://esm.sh/react@18.2.0';
+import React from 'react';
 
 export function ScoreBadge({ score, size = "md", showLabel = true }) {
   let bgColor = "bg-blue-50 text-blue-700 border-blue-200";

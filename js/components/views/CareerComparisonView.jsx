@@ -1,4 +1,4 @@
-import React from 'https://esm.sh/react@18.2.0';
+import React from 'react';
 import { useApp } from '../../context/AppContext.jsx';
 import { ScoreBadge } from '../common/ScoreBadge.jsx';
 import { AIDisclaimerBanner } from '../common/Disclaimers.jsx';

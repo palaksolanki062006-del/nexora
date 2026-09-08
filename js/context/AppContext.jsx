@@ -1,5 +1,5 @@
 // NEXORA Global State & Intelligent Recommendation Context
-import React, { createContext, useContext, useState, useEffect, useMemo } from 'https://esm.sh/react@18.2.0';
+import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
 import {
   PERSONA_PRESETS,
   CAREER_PATHS,

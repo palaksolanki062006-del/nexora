@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'https://esm.sh/react@18.2.0';
+import React, { useState, useMemo } from 'react';
 import { useApp } from '../../context/AppContext.jsx';
 import { ScoreBadge } from '../common/ScoreBadge.jsx';
 import { VerifiedBadge } from '../common/Disclaimers.jsx';

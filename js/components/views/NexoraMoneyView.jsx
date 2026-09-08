@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'https://esm.sh/react@18.2.0';
+import React, { useState, useMemo } from 'react';
 import { useApp } from '../../context/AppContext.jsx';
 import { FinancialDisclaimerBanner } from '../common/Disclaimers.jsx';
 
