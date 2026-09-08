@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexora Onboarding - Define Your Path</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary": "#ffffff",
+                      "outline": "#737686",
+                      "on-primary": "#ffffff",
+                      "primary-fixed": "#dbe1ff",
+                      "on-tertiary-fixed": "#002113",
+                      "on-surface-variant": "#434655",
+                      "background": "#f8f9ff",
+                      "surface-bright": "#f8f9ff",
+                      "secondary": "#565e74",
+                      "on-secondary-container": "#5c647a",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "tertiary-fixed": "#6ffbbe",
+                      "on-surface": "#0b1c30",
+                      "on-primary-fixed": "#00174b",
+                      "outline-variant": "#c3c6d7",
+                      "on-secondary-fixed": "#131b2e",
+                      "on-error-container": "#93000a",
+                      "on-error": "#ffffff",
+                      "surface-container": "#e5eeff",
+                      "secondary-fixed-dim": "#bec6e0",
+                      "inverse-surface": "#213145",
+                      "secondary-container": "#dae2fd",
+                      "error-container": "#ffdad6",
+                      "surface-dim": "#cbdbf5",
+                      "surface-container-low": "#eff4ff",
+                      "primary-container": "#2563eb",
+                      "on-secondary": "#ffffff",
+                      "tertiary-fixed-dim": "#4edea3",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-background": "#0b1c30",
+                      "inverse-primary": "#b4c5ff",
+                      "surface-container-high": "#dce9ff",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "inverse-on-surface": "#eaf1ff",
+                      "surface-variant": "#d3e4fe",
+                      "tertiary-container": "#007d55",
+                      "on-tertiary-fixed-variant": "#005236",
+                      "on-primary-container": "#eeefff",
+                      "secondary-fixed": "#dae2fd",
+                      "tertiary": "#006242",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-tint": "#0053db",
+                      "surface": "#f8f9ff",
+                      "on-secondary-fixed-variant": "#3f465c",
+                      "primary": "#004ac6",
+                      "error": "#ba1a1a",
+                      "on-tertiary-container": "#bdffdb"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xxl": "64px",
+                      "sm": "8px",
+                      "xs": "4px",
+                      "md": "16px",
+                      "xl": "40px",
+                      "unit": "4px",
+                      "gutter": "24px",
+                      "container-max": "1200px",
+                      "margin-mobile": "16px",
+                      "lg": "24px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+          .material-symbols-outlined {
+              font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+          }
+          .icon-fill {
+              font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+          }
+          /* Custom Slider Styling */
+          input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+          }
+          input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #004ac6; /* primary color */
+            cursor: pointer;
+            margin-top: -8px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border: 2px solid #ffffff;
+          }
+          input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #e5eeff; /* surface-container */
+            border-radius: 2px;
+          }
+          input[type=range]:focus::-webkit-slider-runnable-track {
+            background: #cbdbf5; /* surface-dim */
+          }
+      </style>
+</head>
+<body class="bg-background min-h-screen text-on-surface antialiased flex flex-col items-center justify-center p-md md:p-xl">
+<!-- Main Container -->
+<main class="w-full max-w-[800px] bg-surface-container-lowest rounded-[24px] shadow-[0px_4px_20px_rgba(15,23,42,0.05)] overflow-hidden relative">
+<!-- Header Section -->
+<div class="px-lg pt-xl pb-md border-b border-surface-container">
+<div class="flex items-center justify-between mb-lg">
+<div class="text-primary font-display-lg text-headline-md tracking-tight">NEXORA</div>
+<!-- Progress Indicator -->
+<div class="flex items-center gap-sm">
+<span class="font-label-md text-label-md text-secondary">Step 4 of 8</span>
+<div class="flex gap-xs">
+<div class="w-10 h-1.5 bg-primary rounded-full"></div>
+<div class="w-10 h-1.5 bg-primary rounded-full"></div>
+<div class="w-10 h-1.5 bg-primary rounded-full"></div>
+<div class="w-10 h-1.5 bg-primary rounded-full"></div>
+<div class="w-10 h-1.5 bg-surface-container-high rounded-full"></div>
+<div class="w-10 h-1.5 bg-surface-container-high rounded-full"></div>
+<div class="w-10 h-1.5 bg-surface-container-high rounded-full"></div>
+<div class="w-10 h-1.5 bg-surface-container-high rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="flex items-start justify-between">
+<div>
+<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-sm">Define Your Path</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl">Set your primary goals and current constraints so we can map realistic opportunities for you.</p>
+</div>
+<!-- Tooltip Trigger -->
+<div class="relative group cursor-pointer mt-sm">
+<span class="material-symbols-outlined text-outline hover:text-primary transition-colors">info</span>
+<!-- Tooltip Content -->
+<div class="absolute right-0 top-full mt-sm w-64 p-md bg-inverse-surface text-inverse-on-surface rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+<p class="font-label-sm text-label-sm font-semibold mb-xs">Why we ask this?</p>
+<p class="font-body-md text-[13px] leading-snug">This data directly feeds your AI Navigator, ensuring it only recommends paths that fit within your available time and financial limits.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Content Area -->
+<div class="p-lg md:p-xl space-y-xl">
+<!-- Section 1: Goals -->
+<section>
+<div class="flex items-center gap-sm mb-md">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined icon-fill text-[18px]">flag</span>
+</div>
+<h2 class="font-headline-md text-[20px] text-on-surface">Primary Goals</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg">Select all that apply to your current journey.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Goal Option 1 -->
+<label class="relative flex items-center p-md border border-outline-variant rounded-xl cursor-pointer hover:bg-surface-container-low transition-colors group">
+<input checked="" class="peer sr-only" name="goals" type="checkbox" value="internship"/>
+<div class="w-5 h-5 border-2 border-outline rounded flex items-center justify-center mr-md peer-checked:bg-primary peer-checked:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-primary text-[16px] opacity-0 peer-checked:opacity-100">check</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Get Internship</span>
+<div class="absolute inset-0 border-2 border-transparent rounded-xl peer-checked:border-primary transition-colors pointer-events-none"></div>
+</label>
+<!-- Goal Option 2 -->
+<label class="relative flex items-center p-md border border-outline-variant rounded-xl cursor-pointer hover:bg-surface-container-low transition-colors group">
+<input class="peer sr-only" name="goals" type="checkbox" value="first_job"/>
+<div class="w-5 h-5 border-2 border-outline rounded flex items-center justify-center mr-md peer-checked:bg-primary peer-checked:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-primary text-[16px] opacity-0 peer-checked:opacity-100">check</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Get First Job</span>
+<div class="absolute inset-0 border-2 border-transparent rounded-xl peer-checked:border-primary transition-colors pointer-events-none"></div>
+</label>
+<!-- Goal Option 3 -->
+<label class="relative flex items-center p-md border border-outline-variant rounded-xl cursor-pointer hover:bg-surface-container-low transition-colors group">
+<input class="peer sr-only" name="goals" type="checkbox" value="exam"/>
+<div class="w-5 h-5 border-2 border-outline rounded flex items-center justify-center mr-md peer-checked:bg-primary peer-checked:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-primary text-[16px] opacity-0 peer-checked:opacity-100">check</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Prepare for Exam</span>
+<div class="absolute inset-0 border-2 border-transparent rounded-xl peer-checked:border-primary transition-colors pointer-events-none"></div>
+</label>
+<!-- Goal Option 4 -->
+<label class="relative flex items-center p-md border border-outline-variant rounded-xl cursor-pointer hover:bg-surface-container-low transition-colors group">
+<input checked="" class="peer sr-only" name="goals" type="checkbox" value="skill"/>
+<div class="w-5 h-5 border-2 border-outline rounded flex items-center justify-center mr-md peer-checked:bg-primary peer-checked:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-primary text-[16px] opacity-0 peer-checked:opacity-100">check</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Learn a Skill</span>
+<div class="absolute inset-0 border-2 border-transparent rounded-xl peer-checked:border-primary transition-colors pointer-events-none"></div>
+</label>
+<!-- Goal Option 5 -->
+<label class="relative flex items-center p-md border border-outline-variant rounded-xl cursor-pointer hover:bg-surface-container-low transition-colors group">
+<input class="peer sr-only" name="goals" type="checkbox" value="abroad"/>
+<div class="w-5 h-5 border-2 border-outline rounded flex items-center justify-center mr-md peer-checked:bg-primary peer-checked:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-primary text-[16px] opacity-0 peer-checked:opacity-100">check</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Study Abroad</span>
+<div class="absolute inset-0 border-2 border-transparent rounded-xl peer-checked:border-primary transition-colors pointer-events-none"></div>
+</label>
+<!-- Goal Option 6 -->
+<label class="relative flex items-center p-md border border-outline-variant rounded-xl cursor-pointer hover:bg-surface-container-low transition-colors group">
+<input class="peer sr-only" name="goals" type="checkbox" value="invest"/>
+<div class="w-5 h-5 border-2 border-outline rounded flex items-center justify-center mr-md peer-checked:bg-primary peer-checked:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-primary text-[16px] opacity-0 peer-checked:opacity-100">check</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Invest</span>
+<div class="absolute inset-0 border-2 border-transparent rounded-xl peer-checked:border-primary transition-colors pointer-events-none"></div>
+</label>
+</div>
+</section>
+<hr class="border-surface-container border-t"/>
+<!-- Section 2: Constraints -->
+<section>
+<div class="flex items-center gap-sm mb-lg">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined icon-fill text-[18px]">tune</span>
+</div>
+<h2 class="font-headline-md text-[20px] text-on-surface">Current Constraints</h2>
+</div>
+<div class="space-y-xl">
+<!-- Constraint 1: Hours -->
+<div>
+<div class="flex justify-between items-center mb-sm">
+<label class="font-label-md text-label-md text-on-surface">Available Hours / Week</label>
+<span class="font-label-md text-label-md text-primary bg-primary-container/10 px-sm py-[2px] rounded" id="hoursVal">15 hrs</span>
+</div>
+<p class="font-body-md text-[13px] text-on-surface-variant mb-md">Time you can realistically dedicate outside of current commitments.</p>
+<div class="px-xs">
+<input class="w-full" max="40" min="0" oninput="document.getElementById('hoursVal').innerText = this.value + ' hrs'" type="range" value="15"/>
+<div class="flex justify-between mt-sm">
+<span class="font-label-sm text-label-sm text-outline">0</span>
+<span class="font-label-sm text-label-sm text-outline">40+</span>
+</div>
+</div>
+</div>
+<!-- Constraint 2: Location -->
+<div>
+<label class="font-label-md text-label-md text-on-surface block mb-sm">Preferred Location</label>
+<div class="flex flex-wrap gap-sm">
+<label class="cursor-pointer">
+<input class="peer sr-only" name="location" type="radio" value="onsite"/>
+<div class="px-md py-sm border border-outline-variant rounded-lg font-label-md text-label-md text-on-surface-variant peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary-container transition-colors">On-site</div>
+</label>
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="location" type="radio" value="remote"/>
+<div class="px-md py-sm border border-outline-variant rounded-lg font-label-md text-label-md text-on-surface-variant peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary-container transition-colors">Remote</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="location" type="radio" value="hybrid"/>
+<div class="px-md py-sm border border-outline-variant rounded-lg font-label-md text-label-md text-on-surface-variant peer-checked:bg-primary-container peer-checked:text-on-primary-container peer-checked:border-primary-container transition-colors">Hybrid</div>
+</label>
+</div>
+</div>
+<!-- Constraint 3: Budget -->
+<div>
+<div class="flex justify-between items-center mb-sm">
+<label class="font-label-md text-label-md text-on-surface">Monthly Prep Budget</label>
+<span class="font-label-md text-label-md text-primary bg-primary-container/10 px-sm py-[2px] rounded" id="budgetVal">₹5000</span>
+</div>
+<p class="font-body-md text-[13px] text-on-surface-variant mb-md">For courses, certifications, or materials.</p>
+<div class="px-xs">
+<input class="w-full" max="20000" min="0" oninput="document.getElementById('budgetVal').innerText = '₹' + this.value" step="1000" type="range" value="5000"/>
+<div class="flex justify-between mt-sm">
+<span class="font-label-sm text-label-sm text-outline">₹0</span>
+<span class="font-label-sm text-label-sm text-outline">₹20k+</span>
+</div>
+</div>
+</div>
+<!-- Constraint 4: Academic Workload -->
+<div>
+<label class="font-label-md text-label-md text-on-surface block mb-sm">Current Academic Workload</label>
+<div class="grid grid-cols-3 gap-sm">
+<label class="cursor-pointer">
+<input class="peer sr-only" name="workload" type="radio" value="light"/>
+<div class="p-md text-center border border-outline-variant rounded-xl peer-checked:bg-primary/5 peer-checked:border-primary transition-all group">
+<span class="font-label-md text-label-md text-on-surface block mb-xs group-hover:text-primary">Light</span>
+<span class="font-label-sm text-label-sm text-outline block">1-2 classes/day</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="workload" type="radio" value="medium"/>
+<div class="p-md text-center border border-outline-variant rounded-xl peer-checked:bg-primary/5 peer-checked:border-primary transition-all group relative">
+<span class="font-label-md text-label-md text-on-surface block mb-xs group-hover:text-primary">Medium</span>
+<span class="font-label-sm text-label-sm text-outline block">Standard load</span>
+<!-- Selection indicator -->
+<div class="absolute -top-2 -right-2 w-5 h-5 bg-primary rounded-full text-on-primary flex items-center justify-center opacity-0 peer-checked:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[12px]">check</span>
+</div>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="workload" type="radio" value="heavy"/>
+<div class="p-md text-center border border-outline-variant rounded-xl peer-checked:bg-primary/5 peer-checked:border-primary transition-all group">
+<span class="font-label-md text-label-md text-on-surface block mb-xs group-hover:text-primary">Heavy</span>
+<span class="font-label-sm text-label-sm text-outline block">Exams / Thesis</span>
+</div>
+</label>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer Actions -->
+<div class="p-lg md:p-xl bg-surface-container-low border-t border-surface-container flex items-center justify-between">
+<button class="px-md py-sm font-label-md text-label-md text-secondary hover:text-on-surface transition-colors">
+                Back
+            </button>
+<button class="px-lg py-md bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:bg-on-primary-fixed-variant transition-colors shadow-sm flex items-center gap-xs">
+                Continue to Analysis
+                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</main>
+</body></html>

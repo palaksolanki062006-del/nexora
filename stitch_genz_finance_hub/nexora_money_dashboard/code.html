@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexora Money: Financial Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#bba2fd",
+                        "intelligence-blue": "#2563eb",
+                        "on-secondary-container": "#4b3486",
+                        "on-primary-container": "#b8c8ff",
+                        "on-secondary-fixed-variant": "#4f378a",
+                        "tertiary": "#751f00",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb59e",
+                        "surface-variant": "#e2e2ec",
+                        "inverse-on-surface": "#f0f0fb",
+                        "on-secondary-fixed": "#22005d",
+                        "on-tertiary-fixed-variant": "#842500",
+                        "on-background": "#191b23",
+                        "inverse-surface": "#2e3038",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "primary-container": "#004ac6",
+                        "surface-dim": "#d9d9e4",
+                        "error": "#ba1a1a",
+                        "background": "#faf8ff",
+                        "secondary-fixed": "#e9ddff",
+                        "secondary-fixed-dim": "#cfbcff",
+                        "on-surface": "#191b23",
+                        "on-tertiary-fixed": "#3a0b00",
+                        "outline": "#737685",
+                        "on-primary": "#ffffff",
+                        "secondary": "#6750a4",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#1b55d0",
+                        "tertiary-container": "#9c2e02",
+                        "inverse-primary": "#b4c5ff",
+                        "surface": "#faf8ff",
+                        "error-container": "#ffdad6",
+                        "alert-amber": "#f59e0b",
+                        "surface-container-low": "#f3f3fd",
+                        "tertiary-fixed": "#ffdbd0",
+                        "on-tertiary-container": "#ffb9a4",
+                        "surface-container-high": "#e7e7f2",
+                        "financial-lavender": "#e0d2ff",
+                        "on-surface-variant": "#434654",
+                        "outline-variant": "#c3c6d6",
+                        "surface-bright": "#faf8ff",
+                        "deep-slate": "#0b1c30",
+                        "action-green": "#10b981",
+                        "primary": "#003594",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#dbe1ff",
+                        "on-primary-fixed": "#00174b",
+                        "surface-container-highest": "#e2e2ec",
+                        "on-error-container": "#93000a",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#ededf8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xxl": "64px",
+                        "md": "16px",
+                        "container-max": "1200px",
+                        "margin-mobile": "16px",
+                        "sm": "8px",
+                        "gutter": "24px",
+                        "lg": "24px",
+                        "xl": "40px",
+                        "base": "4px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-full flex flex-col py-lg bg-white dark:bg-inverse-surface border-r border-outline-variant dark:border-outline shadow-md w-64 z-50 hidden md:flex">
+<div class="px-lg mb-xl">
+<h1 class="text-headline-md font-headline-md font-bold text-primary">Nexora</h1>
+</div>
+<div class="flex flex-col gap-sm px-sm flex-grow">
+<!-- Dashboard (Inactive) -->
+<a class="flex items-center gap-md text-on-surface-variant dark:text-surface-variant px-md py-sm hover:bg-surface-container-low dark:hover:bg-surface-variant transition-all duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+<!-- Opportunities (Inactive) -->
+<a class="flex items-center gap-md text-on-surface-variant dark:text-surface-variant px-md py-sm hover:bg-surface-container-low dark:hover:bg-surface-variant transition-all duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">explore</span>
+<span class="text-label-md font-label-md">Opportunities</span>
+</a>
+<!-- Career Path (Inactive) -->
+<a class="flex items-center gap-md text-on-surface-variant dark:text-surface-variant px-md py-sm hover:bg-surface-container-low dark:hover:bg-surface-variant transition-all duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">route</span>
+<span class="text-label-md font-label-md">Career Path</span>
+</a>
+<!-- Nexora Money (Active) -->
+<a class="flex items-center gap-md bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-lg px-md py-sm font-bold scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="text-label-md font-label-md">Nexora Money</span>
+</a>
+<!-- Settings (Inactive) -->
+<a class="flex items-center gap-md text-on-surface-variant dark:text-surface-variant px-md py-sm hover:bg-surface-container-low dark:hover:bg-surface-variant transition-all duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</div>
+<div class="px-lg mt-auto">
+<div class="flex items-center gap-md mb-lg">
+<img class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="A small circular avatar placeholder image showing a professional, modern, well-lit studio portrait of a young South Asian woman against a clean white background. Soft lighting, high resolution, premium corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKFtMZl4hOk4ibUs5bRgDMpWypXFZQs3l5GM3Ljw2wzzhHLK5rNmt6h7TM-ZagNpaIiZKbf-bR4ZuZHUJHvmh2dx2Sugx9xefI1ACRW8nLXvCvBOWVuTMd-ymfPVD4YSMz2PvMiNinLh30XCvPac15L72nv2FYPrQIx6kEFKobuvsRFEtEefRNhyzC5UB8WtA3z9CTEGfa2VTomxp2FykdTYLwu0_mqJy4bvSLP6ue1JSf8JBuo1QmlQ"/>
+<div>
+<p class="text-label-md font-label-md text-on-surface">Executive Navigator</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Premium Career Intelligence</p>
+</div>
+</div>
+<button class="w-full bg-intelligence-blue text-white rounded-lg py-sm px-md text-label-md font-label-md hover:bg-primary transition-colors">
+                Upgrade to Pro
+            </button>
+<a class="flex items-center gap-md text-on-surface-variant dark:text-surface-variant px-md py-sm hover:bg-surface-container-low dark:hover:bg-surface-variant transition-all duration-200 rounded-lg mt-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">help</span>
+<span class="text-label-md font-label-md">Help Center</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-64 p-margin-mobile md:p-xl lg:p-xxl max-w-container-max mx-auto w-full">
+<!-- Header -->
+<header class="mb-xl">
+<h2 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-primary mb-xs">Good morning, Aparna.</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant">Your wealth journey, navigated.</p>
+</header>
+<!-- Daily Money Tip (Horizontal Highlight Bar) -->
+<section class="mb-xl bg-surface-container-low border border-intelligence-blue/20 rounded-xl p-md flex items-center gap-md shadow-sm">
+<div class="w-10 h-10 rounded-full bg-intelligence-blue/10 flex items-center justify-center flex-shrink-0 text-intelligence-blue">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+</div>
+<div>
+<p class="text-label-md font-label-md text-primary mb-1">Intelligence Insight</p>
+<p class="text-body-md font-body-md text-on-surface">Automating a ₹2,000 monthly SIP could reach your Higher Education goal 4 months faster based on current market projections.</p>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-xl">
+<!-- Left Column: Snapshot & Actions -->
+<div class="lg:col-span-2 flex flex-col gap-xl">
+<!-- Financial Snapshot (Nexora Money Module) -->
+<section class="glass-panel rounded-xl p-lg shadow-sm relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-financial-lavender/30 to-transparent pointer-events-none"></div>
+<div class="relative z-10 flex justify-between items-start mb-lg">
+<div>
+<h3 class="text-headline-md font-headline-md text-on-surface mb-xs">Savings Goal: Higher Education</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">Target: ₹1,50,000</p>
+</div>
+<span class="bg-secondary-container/30 text-on-secondary-container text-label-sm font-label-sm px-sm py-xs rounded-full border border-secondary-container">On Track</span>
+</div>
+<div class="relative z-10 mb-lg">
+<div class="flex justify-between items-end mb-sm">
+<span class="text-display-lg font-display-lg text-primary">₹38,000</span>
+<span class="text-body-md font-body-md text-on-surface-variant mb-2">Monthly target: ₹4,000</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full bg-surface-variant rounded-full h-3 mb-2 overflow-hidden">
+<div class="bg-gradient-to-r from-intelligence-blue to-secondary h-3 rounded-full" style="width: 25%"></div>
+</div>
+<p class="text-label-sm font-label-sm text-outline text-right">25% Funded</p>
+</div>
+<!-- Simplified Chart Area -->
+<div class="relative z-10 h-32 w-full mt-md bg-white/50 rounded-lg border border-white/60 p-md flex items-end gap-2">
+<div class="w-1/6 bg-secondary/20 h-1/4 rounded-t-sm"></div>
+<div class="w-1/6 bg-secondary/30 h-2/4 rounded-t-sm"></div>
+<div class="w-1/6 bg-secondary/40 h-3/4 rounded-t-sm"></div>
+<div class="w-1/6 bg-intelligence-blue/50 h-full rounded-t-sm"></div>
+<div class="w-1/6 border-2 border-dashed border-outline-variant h-full rounded-t-sm opacity-50"></div>
+<div class="w-1/6 border-2 border-dashed border-outline-variant h-full rounded-t-sm opacity-50"></div>
+</div>
+</section>
+<!-- Recommended Actions -->
+<section>
+<h3 class="text-headline-md font-headline-md text-on-surface mb-lg">Strategic Actions</h3>
+<div class="flex flex-col gap-md">
+<!-- Action 1 -->
+<div class="bg-white border border-outline-variant rounded-xl p-lg shadow-[0px_4px_20px_rgba(15,23,42,0.05)] hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-md">
+<div class="flex items-center gap-md">
+<div class="relative w-12 h-12 flex items-center justify-center">
+<svg class="absolute inset-0 w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-variant" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+<path class="text-intelligence-blue" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="92, 100" stroke-width="3"></path>
+</svg>
+<span class="text-label-sm font-label-sm text-intelligence-blue font-bold">92%</span>
+</div>
+<div>
+<h4 class="text-label-md font-label-md text-on-surface">Automate SIP for Higher Ed Goal</h4>
+<p class="text-label-sm font-label-sm text-on-surface-variant mt-1">High Impact</p>
+</div>
+</div>
+<button class="bg-action-green text-white px-md py-sm rounded-lg text-label-md font-label-md hover:bg-opacity-90 transition-opacity">
+                                    Execute
+                                </button>
+</div>
+<div class="bg-surface-container-low rounded-lg p-sm border-l-2 border-intelligence-blue">
+<p class="text-body-md font-body-md text-on-surface-variant">
+<span class="font-bold text-on-surface">Reasoning:</span> Based on your ₹5,000 monthly budget constraint, a ₹2,000 automated transfer optimizes growth without straining cash flow.
+                                </p>
+</div>
+</div>
+<!-- Action 2 -->
+<div class="bg-white border border-outline-variant rounded-xl p-lg shadow-[0px_4px_20px_rgba(15,23,42,0.05)] hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-md">
+<div class="flex items-center gap-md">
+<div class="relative w-12 h-12 flex items-center justify-center">
+<svg class="absolute inset-0 w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-variant" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+<path class="text-secondary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="85, 100" stroke-width="3"></path>
+</svg>
+<span class="text-label-sm font-label-sm text-secondary font-bold">85%</span>
+</div>
+<div>
+<h4 class="text-label-md font-label-md text-on-surface">Emergency Fund Setup (Phase 1)</h4>
+<p class="text-label-sm font-label-sm text-on-surface-variant mt-1">Foundation</p>
+</div>
+</div>
+<button class="bg-transparent border border-intelligence-blue text-intelligence-blue px-md py-sm rounded-lg text-label-md font-label-md hover:bg-surface-container-low transition-colors">
+                                    Review
+                                </button>
+</div>
+<div class="bg-surface-container-low rounded-lg p-sm border-l-2 border-secondary">
+<p class="text-body-md font-body-md text-on-surface-variant">
+<span class="font-bold text-on-surface">Reasoning:</span> Allocating the remaining ₹3,000 of your budget constraint here builds crucial security before aggressive investing.
+                                </p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Learning Modules -->
+<div class="lg:col-span-1">
+<section class="bg-white border border-outline-variant rounded-xl p-lg shadow-[0px_4px_20px_rgba(15,23,42,0.05)] h-full">
+<div class="flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">school</span>
+<h3 class="text-headline-md font-headline-md text-on-surface">Financial Intelligence</h3>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant mb-xl">Curated modules from Luminous Finance to elevate your wealth strategy.</p>
+<div class="grid grid-cols-1 gap-md">
+<!-- Module Card 1 -->
+<div class="group cursor-pointer border border-surface-variant rounded-lg p-md hover:border-secondary transition-colors relative overflow-hidden bg-surface-bright">
+<div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-financial-lavender/40 to-transparent rounded-bl-full pointer-events-none"></div>
+<div class="flex items-center gap-md mb-sm">
+<div class="w-8 h-8 rounded bg-financial-lavender/30 flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0;">account_balance</span>
+</div>
+<h4 class="text-label-md font-label-md text-on-surface group-hover:text-secondary transition-colors">Budgeting Mastery</h4>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Align cash flow with career ambitions.</p>
+</div>
+<!-- Module Card 2 -->
+<div class="group cursor-pointer border border-surface-variant rounded-lg p-md hover:border-secondary transition-colors relative overflow-hidden bg-surface-bright">
+<div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-financial-lavender/40 to-transparent rounded-bl-full pointer-events-none"></div>
+<div class="flex items-center gap-md mb-sm">
+<div class="w-8 h-8 rounded bg-financial-lavender/30 flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0;">trending_up</span>
+</div>
+<h4 class="text-label-md font-label-md text-on-surface group-hover:text-secondary transition-colors">Strategic Investing</h4>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Market navigation for young professionals.</p>
+</div>
+<!-- Module Card 3 -->
+<div class="group cursor-pointer border border-surface-variant rounded-lg p-md hover:border-secondary transition-colors relative overflow-hidden bg-surface-bright">
+<div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-financial-lavender/40 to-transparent rounded-bl-full pointer-events-none"></div>
+<div class="flex items-center gap-md mb-sm">
+<div class="w-8 h-8 rounded bg-financial-lavender/30 flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0;">savings</span>
+</div>
+<h4 class="text-label-md font-label-md text-on-surface group-hover:text-secondary transition-colors">Goal-Based Saving</h4>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Structuring reserves for education and milestones.</p>
+</div>
+<!-- Module Card 4 -->
+<div class="group cursor-pointer border border-surface-variant rounded-lg p-md hover:border-secondary transition-colors relative overflow-hidden bg-surface-bright">
+<div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-financial-lavender/40 to-transparent rounded-bl-full pointer-events-none"></div>
+<div class="flex items-center gap-md mb-sm">
+<div class="w-8 h-8 rounded bg-financial-lavender/30 flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0;">autorenew</span>
+</div>
+<h4 class="text-label-md font-label-md text-on-surface group-hover:text-secondary transition-colors">SIP Basics</h4>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">The power of automated compound growth.</p>
+</div>
+</div>
+<button class="w-full mt-lg text-intelligence-blue text-label-md font-label-md hover:underline flex items-center justify-center gap-xs">
+                        View All Modules <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</section>
+</div>
+</div>
+</main>
+</body></html>

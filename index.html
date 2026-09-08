@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEXORA — Know What To Do Next | AI Personal Navigator</title>
+  <meta name="description" content="Your AI personal navigator for careers, opportunities, skills, and financial goals. Turn scattered information into prioritized action." />
+  
+  <!-- Favicon / App Icon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23004ac6'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>" />
+
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff4ff',
+              100: '#dbe1ff',
+              500: '#2563eb',
+              600: '#004ac6',
+              700: '#003ea8',
+              900: '#0b1c30'
+            },
+            surface: {
+              bg: '#f8f9ff',
+              card: '#ffffff'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Plus Jakarta Sans', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="./css/styles.css" />
+
+  <!-- Babel Standalone for In-Browser JSX/ESM Transpilation -->
+  <script src="https://unpkg.com/@babel/standalone@7.23.6/babel.min.js"></script>
+</head>
+<body class="bg-[#f8f9ff] text-slate-900 min-h-screen antialiased selection:bg-blue-600 selection:text-white">
+  <!-- React Root Container -->
+  <div id="root">
+    <!-- Fallback Splash / Loading Screen before React mount -->
+    <div class="flex min-h-screen items-center justify-center bg-[#f8f9ff]">
+      <div class="text-center space-y-4">
+        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-blue-700 via-blue-600 to-indigo-600 flex items-center justify-center text-white mx-auto shadow-xl shadow-blue-500/20 animate-pulse">
+          <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
+        <div>
+          <div class="font-heading font-extrabold text-lg text-slate-900 tracking-tight">NEXORA</div>
+          <div class="text-xs text-blue-600 font-semibold tracking-wider uppercase mt-0.5">Know What To Do Next</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Load Main Application Script -->
+  <script type="text/babel" data-type="module" src="./js/app.jsx"></script>
+</body>
+</html>

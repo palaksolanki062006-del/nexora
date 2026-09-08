@@ -1,0 +1,432 @@
+import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
+import {
+  PERSONA_PRESETS,
+  CAREER_PATHS,
+  generateFullOpportunitiesDatabase,
+  INITIAL_WEEKLY_PLAN,
+  INITIAL_APPLICATIONS,
+  INITIAL_NOTIFICATIONS,
+  BILLING_INVOICES
+} from '../data/initialData.js';
+
+const AppContext = createContext();
+
+export function AppProvider({ children }) {
+  const [currentPersonaId, setCurrentPersonaId] = useState(() => {
+    return localStorage.getItem('nexora_persona_id') || 'persona-aarav';
+  });
+
+  const [userProfile, setUserProfile] = useState(() => {
+    const saved = localStorage.getItem('nexora_user_profile');
+    if (saved) {
+      try { return JSON.parse(saved); } catch (e) {}
+    }
+    return PERSONA_PRESETS[0];
+  });
+
+  const [currentScreen, setCurrentScreen] = useState(() => {
+    const onboarded = localStorage.getItem('nexora_onboarded');
+    return onboarded === 'true' ? 'dashboard' : 'welcome';
+  });
+
+  const [allOpportunities, setAllOpportunities] = useState(() => {
+    return generateFullOpportunitiesDatabase();
+  });
+
+  const [rejectedOpportunityIds, setRejectedOpportunityIds] = useState(() => {
+    const saved = localStorage.getItem('nexora_rejected_opps');
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  const [applications, setApplications] = useState(() => {
+    const saved = localStorage.getItem('nexora_applications');
+    return saved ? JSON.parse(saved) : INITIAL_APPLICATIONS;
+  });
+
+  const [weeklyPlan, setWeeklyPlan] = useState(() => {
+    const saved = localStorage.getItem('nexora_weekly_plan');
+    return saved ? JSON.parse(saved) : INITIAL_WEEKLY_PLAN;
+  });
+
+  const [isProUser, setIsProUser] = useState(() => {
+    return localStorage.getItem('nexora_is_pro') === 'true';
+  });
+
+  const [invoices, setInvoices] = useState(BILLING_INVOICES);
+  const [notifications, setNotifications] = useState(INITIAL_NOTIFICATIONS);
+
+  const [activeModal, setActiveModal] = useState(null);
+  const [modalData, setModalData] = useState(null);
+  const [isAIChatOpen, setIsAIChatOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [toastMessage, setToastMessage] = useState(null);
+
+  const [compareCareerIds, setCompareCareerIds] = useState(['rbi-grade-b', 'policy-analyst', 'upsc-civil-services']);
+
+  useEffect(() => {
+    localStorage.setItem('nexora_persona_id', currentPersonaId);
+  }, [currentPersonaId]);
+
+  useEffect(() => {
+    localStorage.setItem('nexora_user_profile', JSON.stringify(userProfile));
+  }, [userProfile]);
+
+  useEffect(() => {
+    localStorage.setItem('nexora_applications', JSON.stringify(applications));
+  }, [applications]);
+
+  useEffect(() => {
+    localStorage.setItem('nexora_weekly_plan', JSON.stringify(weeklyPlan));
+  }, [weeklyPlan]);
+
+  useEffect(() => {
+    localStorage.setItem('nexora_rejected_opps', JSON.stringify(rejectedOpportunityIds));
+  }, [rejectedOpportunityIds]);
+
+  useEffect(() => {
+    localStorage.setItem('nexora_is_pro', isProUser ? 'true' : 'false');
+  }, [isProUser]);
+
+  const showToast = (message, type = 'success') => {
+    setToastMessage({ message, type, id: Date.now() });
+    setTimeout(() => {
+      setToastMessage(null);
+    }, 4000);
+  };
+
+  const switchPersona = (personaId) => {
+    const found = PERSONA_PRESETS.find(p => p.id === personaId);
+    if (found) {
+      setCurrentPersonaId(personaId);
+      setUserProfile(JSON.parse(JSON.stringify(found)));
+      showToast(`Switched persona to ${found.name} (${found.degree})`);
+      if (personaId === 'persona-priya') {
+        setCompareCareerIds(['ai-research-scientist', 'product-management']);
+      } else if (personaId === 'persona-rohan') {
+        setCompareCareerIds(['investment-banking', 'product-management', 'rbi-grade-b']);
+      } else {
+        setCompareCareerIds(['policy-analyst', 'rbi-grade-b', 'upsc-civil-services']);
+      }
+    }
+  };
+
+  const rankedOpportunities = useMemo(() => {
+    return allOpportunities
+      .filter(opp => !rejectedOpportunityIds.includes(opp.id))
+      .map(opp => {
+        const userSkillNames = (userProfile.skills || []).map(s => s.name.toLowerCase());
+        const required = opp.requiredSkills || [];
+        const matchCount = required.filter(req => 
+          userSkillNames.some(userSkill => userSkill.includes(req.toLowerCase()) || req.toLowerCase().includes(userSkill))
+        ).length;
+
+        const skillScore = required.length > 0 ? Math.round((matchCount / required.length) * 100) : 80;
+
+        const isCareerAligned = (opp.targetCareerIds || []).some(catId => 
+          (userProfile.targetCareers || []).includes(catId)
+        );
+        const careerScore = isCareerAligned ? 95 : 65;
+
+        let locScore = 85;
+        if (userProfile.remoteOnly && opp.isRemote) locScore = 100;
+        else if (userProfile.remoteOnly && !opp.isRemote) locScore = 40;
+        else if (opp.location.toLowerCase().includes('delhi') && (userProfile.preferredLocation || '').toLowerCase().includes('delhi')) locScore = 95;
+
+        const timeScore = userProfile.availableHours >= 10 ? 92 : (userProfile.availableHours >= 5 ? 80 : 65);
+
+        const compositeScore = Math.min(99, Math.round(
+          (skillScore * 0.35) + 
+          (careerScore * 0.35) + 
+          (locScore * 0.15) + 
+          (timeScore * 0.15)
+        ));
+
+        return {
+          ...opp,
+          matchScore: compositeScore,
+          skillMatchPercent: skillScore,
+          careerAlignmentPercent: careerScore,
+          timeFeasibilityPercent: timeScore
+        };
+      })
+      .sort((a, b) => b.matchScore - a.matchScore);
+  }, [allOpportunities, userProfile, rejectedOpportunityIds]);
+
+  const nextBestAction = useMemo(() => {
+    return rankedOpportunities[0] || allOpportunities[0];
+  }, [rankedOpportunities, allOpportunities]);
+
+  const topPriorities = useMemo(() => {
+    return rankedOpportunities.slice(0, 4);
+  }, [rankedOpportunities]);
+
+  const funnelStats = useMemo(() => {
+    const total = allOpportunities.length;
+    const potentiallyRelevant = rankedOpportunities.filter(o => o.matchScore >= 75).length;
+    const strongMatches = rankedOpportunities.filter(o => o.matchScore >= 88).length;
+    const prioritiesCount = Math.min(3, strongMatches);
+    return {
+      total: Math.max(100, total),
+      potentiallyRelevant: Math.max(18, potentiallyRelevant),
+      strongMatches: Math.max(7, strongMatches),
+      priorities: prioritiesCount,
+      nextAction: 1
+    };
+  }, [allOpportunities, rankedOpportunities]);
+
+  const profileCompletion = useMemo(() => {
+    let completedFields = 0;
+    const totalFields = 8;
+    if (userProfile.name) completedFields++;
+    if (userProfile.college && userProfile.degree) completedFields++;
+    if (userProfile.skills && userProfile.skills.length >= 3) completedFields++;
+    if (userProfile.experience && userProfile.experience.length >= 1) completedFields++;
+    if (userProfile.targetCareers && userProfile.targetCareers.length >= 1) completedFields++;
+    if (userProfile.preferences) completedFields++;
+    if (userProfile.availableHours) completedFields++;
+    if (userProfile.financialGoals && userProfile.financialGoals.enabled) completedFields++;
+
+    return Math.round((completedFields / totalFields) * 100);
+  }, [userProfile]);
+
+  const addApplication = (opportunity, stage = 'Saved') => {
+    const existing = applications.find(a => a.opportunityId === opportunity.id);
+    if (existing) {
+      showToast(`Already in your Application Tracker (${existing.stage})`, 'info');
+      return;
+    }
+
+    const newApp = {
+      id: `app-${Date.now()}`,
+      opportunityId: opportunity.id,
+      organization: opportunity.organization,
+      position: opportunity.title,
+      stage: stage,
+      deadline: opportunity.deadline,
+      appliedDate: stage === 'Applied' ? new Date().toISOString().split('T')[0] : null,
+      notes: `Added from Opportunity Explorer on ${new Date().toLocaleDateString()}`,
+      matchScore: opportunity.matchScore,
+      documents: []
+    };
+
+    setApplications(prev => [newApp, ...prev]);
+    showToast(`Added "${opportunity.title}" to ${stage} applications!`);
+  };
+
+  const updateApplicationStage = (appId, newStage) => {
+    setApplications(prev => prev.map(app => {
+      if (app.id === appId) {
+        return {
+          ...app,
+          stage: newStage,
+          appliedDate: (newStage === 'Applied' && !app.appliedDate) ? new Date().toISOString().split('T')[0] : app.appliedDate
+        };
+      }
+      return app;
+    }));
+    showToast(`Moved application to ${newStage}`);
+  };
+
+  const updateApplicationNotes = (appId, notes) => {
+    setApplications(prev => prev.map(app => app.id === appId ? { ...app, notes } : app));
+    showToast('Application notes updated');
+  };
+
+  const addToWeeklyPlan = (opportunity, categoryBadge = 'Application') => {
+    const existing = weeklyPlan.find(t => t.opportunityId === opportunity.id);
+    if (existing) {
+      showToast('This action is already on your weekly plan', 'info');
+      return;
+    }
+
+    const newTask = {
+      id: `task-${Date.now()}`,
+      type: 'TOP PRIORITY',
+      categoryBadge: categoryBadge,
+      title: `Apply / Prepare: ${opportunity.title}`,
+      deadline: `${opportunity.deadline} (${opportunity.daysLeft} days)`,
+      estimatedHours: (opportunity.estimatedTimeMinutes ? (opportunity.estimatedTimeMinutes / 60).toFixed(1) : 1.5),
+      completed: false,
+      opportunityId: opportunity.id,
+      tagline: `Match: ${opportunity.matchScore}% • ${opportunity.organization}`,
+      priorityRank: weeklyPlan.length + 1
+    };
+
+    setWeeklyPlan(prev => [newTask, ...prev]);
+    showToast(`Added "${opportunity.title}" to Your Weekly Plan!`);
+  };
+
+  const toggleTaskCompletion = (taskId) => {
+    setWeeklyPlan(prev => prev.map(t => {
+      if (t.id === taskId) {
+        const nextState = !t.completed;
+        if (nextState) showToast('Task completed! Streak updated 🔥');
+        return { ...t, completed: nextState };
+      }
+      return t;
+    }));
+  };
+
+  const postponeTask = (taskId) => {
+    setWeeklyPlan(prev => prev.map(t => {
+      if (t.id === taskId) {
+        return { ...t, deadline: 'Next Week (Rescheduled)' };
+      }
+      return t;
+    }));
+    showToast('Task moved to next week');
+  };
+
+  const removeWeeklyTask = (taskId) => {
+    setWeeklyPlan(prev => prev.filter(t => t.id !== taskId));
+    showToast('Task removed from weekly plan');
+  };
+
+  const rebuildWeeklyPlanAI = () => {
+    const newPlan = [
+      {
+        id: `task-rebuilt-1`,
+        type: "TOP PRIORITY",
+        categoryBadge: "Application",
+        title: `Submit Application for ${nextBestAction.title}`,
+        deadline: "In 3 days",
+        estimatedHours: 1.5,
+        completed: false,
+        opportunityId: nextBestAction.id,
+        tagline: "Prioritized due to tight deadline and high 94% match",
+        priorityRank: 1
+      },
+      {
+        id: `task-rebuilt-2`,
+        type: "SKILL",
+        categoryBadge: "High Leverage Sprint",
+        title: "Complete 2-Hour Intensive Skill Diagnostic Module",
+        deadline: "Saturday",
+        estimatedHours: 2.0,
+        completed: false,
+        tagline: "Closes your primary resume qualification gap",
+        priorityRank: 2
+      },
+      {
+        id: `task-rebuilt-3`,
+        type: "CAREER",
+        categoryBadge: "30-Day Experiment",
+        title: "Review 2 Policy/Industry Case Studies & draft summary",
+        deadline: "Sunday",
+        estimatedHours: 1.5,
+        completed: false,
+        tagline: "Tests your practical alignment with your primary career goal",
+        priorityRank: 3
+      },
+      {
+        id: `task-rebuilt-4`,
+        type: "FINANCE",
+        categoryBadge: "SIP Habit",
+        title: "Review Monthly Budget & Auto-invest into Education Goal",
+        deadline: "End of month",
+        estimatedHours: 0.5,
+        completed: false,
+        tagline: "Keeps financial milestone trajectory on track",
+        priorityRank: 4
+      }
+    ];
+
+    setWeeklyPlan(newPlan);
+    showToast('✨ Nexora AI dynamically rebuilt your week to fit your available hours!');
+  };
+
+  const markNotRelevant = (oppId) => {
+    setRejectedOpportunityIds(prev => [...prev, oppId]);
+    showToast('Opportunity removed. Nexora AI updated recommendation weights.', 'info');
+  };
+
+  const updateProfile = (updatedFields) => {
+    setUserProfile(prev => ({
+      ...prev,
+      ...updatedFields
+    }));
+    showToast('Profile updated & recommendations refreshed!');
+  };
+
+  const activateProSubscription = (planName = 'Nexora Pro Annual') => {
+    setIsProUser(true);
+    const newInvoice = {
+      id: `INV-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`,
+      date: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
+      plan: planName,
+      amount: planName.includes('Annual') ? '₹3,999' : '₹499',
+      status: 'Paid',
+      downloadUrl: '#invoice-pdf'
+    };
+    setInvoices(prev => [newInvoice, ...prev]);
+    showToast('🎉 Welcome to Nexora Pro! All advanced AI features unlocked.');
+  };
+
+  const cancelProSubscription = () => {
+    setIsProUser(false);
+    showToast('Subscription cancelled. You are on the Free tier.', 'info');
+  };
+
+  const markNotificationRead = (notifId) => {
+    setNotifications(prev => prev.map(n => n.id === notifId ? { ...n, read: true } : n));
+  };
+
+  const unreadNotifCount = notifications.filter(n => !n.read).length;
+
+  return (
+    <AppContext.Provider value={{
+      currentPersonaId,
+      userProfile,
+      currentScreen,
+      setCurrentScreen,
+      allOpportunities,
+      rankedOpportunities,
+      nextBestAction,
+      topPriorities,
+      funnelStats,
+      profileCompletion,
+      applications,
+      weeklyPlan,
+      isProUser,
+      invoices,
+      notifications,
+      unreadNotifCount,
+      compareCareerIds,
+      setCompareCareerIds,
+      activeModal,
+      setActiveModal,
+      modalData,
+      setModalData,
+      isAIChatOpen,
+      setIsAIChatOpen,
+      searchQuery,
+      setSearchQuery,
+      toastMessage,
+      showToast,
+      switchPersona,
+      addApplication,
+      updateApplicationStage,
+      updateApplicationNotes,
+      addToWeeklyPlan,
+      toggleTaskCompletion,
+      postponeTask,
+      removeWeeklyTask,
+      rebuildWeeklyPlanAI,
+      markNotRelevant,
+      updateProfile,
+      activateProSubscription,
+      cancelProSubscription,
+      markNotificationRead,
+      CAREER_PATHS,
+      PERSONA_PRESETS
+    }}>
+      {children}
+    </AppContext.Provider>
+  );
+}
+
+export function useApp() {
+  const context = useContext(AppContext);
+  if (!context) throw new Error('useApp must be used within an AppProvider');
+  return context;
+}

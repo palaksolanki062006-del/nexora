@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexora - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#ffffff",
+                        "outline": "#737686",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#dbe1ff",
+                        "on-tertiary-fixed": "#002113",
+                        "on-surface-variant": "#434655",
+                        "background": "#f8f9ff",
+                        "surface-bright": "#f8f9ff",
+                        "secondary": "#565e74",
+                        "on-secondary-container": "#5c647a",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-surface": "#0b1c30",
+                        "on-primary-fixed": "#00174b",
+                        "outline-variant": "#c3c6d7",
+                        "on-secondary-fixed": "#131b2e",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "surface-container": "#e5eeff",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "inverse-surface": "#213145",
+                        "secondary-container": "#dae2fd",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#cbdbf5",
+                        "surface-container-low": "#eff4ff",
+                        "primary-container": "#2563eb",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-background": "#0b1c30",
+                        "inverse-primary": "#b4c5ff",
+                        "surface-container-high": "#dce9ff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-variant": "#d3e4fe",
+                        "tertiary-container": "#007d55",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "on-primary-container": "#eeefff",
+                        "secondary-fixed": "#dae2fd",
+                        "tertiary": "#006242",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#0053db",
+                        "surface": "#f8f9ff",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "primary": "#004ac6",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#bdffdb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xxl": "64px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "xl": "40px",
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "container-max": "1200px",
+                        "margin-mobile": "16px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #F8FAFC; /* Slate-50 background level 0 */
+        }
+        .card-shadow {
+            box-shadow: 0px 4px 20px rgba(15, 23, 42, 0.05);
+        }
+        /* Chart SVG styling */
+        .chart-grid { stroke: #e2e8f0; stroke-width: 1; }
+        .chart-line { stroke: #004ac6; stroke-width: 2; fill: none; }
+        .chart-area { fill: #004ac6; fill-opacity: 0.1; }
+        .radar-axis { stroke: #e2e8f0; stroke-width: 1; }
+        .radar-polygon { fill: #004ac6; fill-opacity: 0.2; stroke: #004ac6; stroke-width: 2; }
+    </style>
+</head>
+<body class="font-body-md text-on-surface bg-slate-50 antialiased min-h-screen flex">
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden lg:flex flex-col h-screen p-md space-y-sm w-64 fixed left-0 top-0 bg-surface-container-low dark:bg-on-surface border-r border-slate-200 z-50">
+<div class="flex items-center gap-sm mb-xl px-sm">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-primary-container flex items-center justify-center text-on-primary-container font-headline-md">
+                A
+            </div>
+<div>
+<h1 class="font-display-lg text-headline-md text-primary dark:text-primary-fixed">Nexora AI</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Premium Navigator</p>
+</div>
+</div>
+<div class="flex-1 space-y-xs">
+<a class="flex items-center gap-sm px-sm py-sm bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-lg font-semibold transition-transform duration-200 translate-x-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-sm text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-secondary-container/20 rounded-lg hover:bg-surface-container-high dark:hover:bg-secondary-container/20 transition-all" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-md text-label-md">Opportunities</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-sm text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-secondary-container/20 rounded-lg hover:bg-surface-container-high dark:hover:bg-secondary-container/20 transition-all" href="#">
+<span class="material-symbols-outlined">work</span>
+<span class="font-label-md text-label-md">Career Path</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-sm text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-secondary-container/20 rounded-lg hover:bg-surface-container-high dark:hover:bg-secondary-container/20 transition-all" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-md text-label-md">Financials</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-sm text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-secondary-container/20 rounded-lg hover:bg-surface-container-high dark:hover:bg-secondary-container/20 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</div>
+<button class="mt-auto flex items-center justify-center gap-sm w-full py-sm bg-tertiary-container text-on-tertiary-container rounded-lg font-label-md text-label-md hover:bg-tertiary transition-colors">
+<span class="material-symbols-outlined">add</span>
+            New Analysis
+        </button>
+</nav>
+<!-- TopNavBar (Mobile) -->
+<header class="lg:hidden sticky top-0 z-50 flex justify-between items-center w-full px-lg py-md max-w-container-max mx-auto bg-surface-container-lowest dark:bg-on-surface shadow-sm dark:shadow-none bg-surface-container-lowest dark:bg-on-surface">
+<h1 class="font-display-lg text-display-lg font-extrabold tracking-tight text-primary dark:text-primary-fixed text-headline-lg-mobile">NEXORA</h1>
+<button class="p-2 text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 lg:ml-64 p-margin-mobile lg:p-xl max-w-container-max mx-auto w-full space-y-xl">
+<!-- Header Section -->
+<header class="space-y-sm">
+<h2 class="font-headline-lg text-headline-lg lg:text-display-lg font-display-lg text-on-surface tracking-tight">
+                Good morning, Aparna.
+            </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                Here is what matters most right now.
+            </p>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- A. NEXT BEST ACTIONS (Main Column) -->
+<section class="lg:col-span-8 space-y-md">
+<div class="flex items-center justify-between mb-sm">
+<h3 class="font-label-md text-label-md text-secondary uppercase tracking-wider">Next Best Actions</h3>
+<button class="text-primary font-label-sm text-label-sm hover:underline">View All</button>
+</div>
+<!-- Opportunity Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-lg card-shadow border border-slate-100 flex flex-col sm:flex-row gap-lg items-start sm:items-center relative overflow-hidden group hover:border-primary-fixed transition-colors">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+<div class="flex-shrink-0 flex flex-col items-center justify-center w-20 h-20 rounded-full border-4 border-surface-container relative">
+<svg class="absolute inset-0 w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-container stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3"></path>
+<path class="text-primary stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-dasharray="94, 100" stroke-width="3"></path>
+</svg>
+<span class="font-headline-md text-headline-md text-primary">94<span class="text-label-sm">%</span></span>
+</div>
+<div class="flex-1 space-y-sm">
+<div class="flex flex-wrap items-center gap-xs">
+<span class="px-2 py-1 bg-surface-container-low text-primary rounded-md font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span> 28 Aug
+                            </span>
+<span class="px-2 py-1 bg-surface-container-low text-secondary rounded-md font-label-sm text-label-sm">Internship</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface">Policy Research Internship</h4>
+<p class="font-body-md text-body-md text-on-surface-variant bg-surface-bright p-sm rounded-lg border border-slate-100">
+<span class="font-label-md text-label-md text-primary block mb-1">Why this matters:</span>
+                            Supports your policy-career goal and addresses your research-experience gap.
+                        </p>
+</div>
+<div class="flex-shrink-0 mt-md sm:mt-0 w-full sm:w-auto">
+<button class="w-full sm:w-auto px-md py-sm bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:bg-on-primary-fixed-variant transition-colors shadow-sm">
+                            View Opportunity
+                        </button>
+</div>
+</div>
+<!-- Opportunity Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-lg card-shadow border border-slate-100 flex flex-col sm:flex-row gap-lg items-start sm:items-center relative overflow-hidden group hover:border-primary-fixed transition-colors">
+<div class="absolute top-0 left-0 w-1 h-full bg-surface-tint opacity-80"></div>
+<div class="flex-shrink-0 flex flex-col items-center justify-center w-20 h-20 rounded-full border-4 border-surface-container relative">
+<svg class="absolute inset-0 w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-container stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3"></path>
+<path class="text-primary stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-dasharray="88, 100" stroke-width="3"></path>
+</svg>
+<span class="font-headline-md text-headline-md text-primary">88<span class="text-label-sm">%</span></span>
+</div>
+<div class="flex-1 space-y-sm">
+<div class="flex flex-wrap items-center gap-xs">
+<span class="px-2 py-1 bg-surface-container-low text-primary rounded-md font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 4 hrs
+                            </span>
+<span class="px-2 py-1 bg-surface-container-low text-secondary rounded-md font-label-sm text-label-sm">Course</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface">Financial Modeling Course</h4>
+<p class="font-body-md text-body-md text-on-surface-variant bg-surface-bright p-sm rounded-lg border border-slate-100">
+<span class="font-label-md text-label-md text-primary block mb-1">Why this matters:</span>
+                            Critical skill for your goal of joining an investment firm.
+                        </p>
+</div>
+<div class="flex-shrink-0 mt-md sm:mt-0 w-full sm:w-auto">
+<button class="w-full sm:w-auto px-md py-sm border border-primary text-primary rounded-lg font-label-md text-label-md hover:bg-surface-container-low transition-colors">
+                            Start Module
+                        </button>
+</div>
+</div>
+<!-- Opportunity Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-lg card-shadow border border-slate-100 flex flex-col sm:flex-row gap-lg items-start sm:items-center relative overflow-hidden group hover:border-primary-fixed transition-colors">
+<div class="absolute top-0 left-0 w-1 h-full bg-surface-tint opacity-80"></div>
+<div class="flex-shrink-0 flex flex-col items-center justify-center w-20 h-20 rounded-full border-4 border-surface-container relative">
+<svg class="absolute inset-0 w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-container stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3"></path>
+<path class="text-primary stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-dasharray="91, 100" stroke-width="3"></path>
+</svg>
+<span class="font-headline-md text-headline-md text-primary">91<span class="text-label-sm">%</span></span>
+</div>
+<div class="flex-1 space-y-sm">
+<div class="flex flex-wrap items-center gap-xs">
+<span class="px-2 py-1 bg-surface-container-low text-primary rounded-md font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span> 15 Sept
+                            </span>
+<span class="px-2 py-1 bg-surface-container-low text-secondary rounded-md font-label-sm text-label-sm">Funding</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface">Tata Scholarship</h4>
+<p class="font-body-md text-body-md text-on-surface-variant bg-surface-bright p-sm rounded-lg border border-slate-100">
+<span class="font-label-md text-label-md text-primary block mb-1">Why this matters:</span>
+                            Eligible based on your current GPA and degree.
+                        </p>
+</div>
+<div class="flex-shrink-0 mt-md sm:mt-0 w-full sm:w-auto">
+<button class="w-full sm:w-auto px-md py-sm border border-primary text-primary rounded-lg font-label-md text-label-md hover:bg-surface-container-low transition-colors">
+                            Review Details
+                        </button>
+</div>
+</div>
+</section>
+<!-- Sidebar Widgets (Right Column) -->
+<section class="lg:col-span-4 space-y-xl">
+<!-- B. THIS WEEK (Weekly Plan) -->
+<div class="bg-surface-container-lowest rounded-xl p-lg card-shadow border border-slate-100">
+<h3 class="font-label-md text-label-md text-secondary uppercase tracking-wider mb-md">This Week</h3>
+<div class="space-y-0">
+<div class="flex gap-md py-sm border-b border-slate-100 last:border-0 relative">
+<div class="flex flex-col items-center mt-1">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<div class="w-[1px] h-full bg-slate-200 mt-1 absolute top-4 bottom-0 left-[5px] -z-10"></div>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-secondary block">Monday</span>
+<p class="font-body-md text-body-md text-on-surface">2 hrs research skill</p>
+</div>
+</div>
+<div class="flex gap-md py-sm border-b border-slate-100 last:border-0 relative">
+<div class="flex flex-col items-center mt-1">
+<div class="w-3 h-3 rounded-full bg-tertiary-container"></div>
+<div class="w-[1px] h-full bg-slate-200 mt-1 absolute top-4 bottom-0 left-[5px] -z-10"></div>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-secondary block">Tuesday</span>
+<p class="font-body-md text-body-md text-on-surface">Apply for internship</p>
+</div>
+</div>
+<div class="flex gap-md py-sm border-b border-slate-100 last:border-0 relative">
+<div class="flex flex-col items-center mt-1">
+<div class="w-3 h-3 rounded-full bg-surface-container-highest border border-outline-variant"></div>
+<div class="w-[1px] h-full bg-slate-200 mt-1 absolute top-4 bottom-0 left-[5px] -z-10"></div>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-secondary block">Wednesday</span>
+<p class="font-body-md text-body-md text-on-surface">1 hr exam preparation</p>
+</div>
+</div>
+<div class="flex gap-md py-sm border-b border-slate-100 last:border-0 relative">
+<div class="flex flex-col items-center mt-1">
+<div class="w-3 h-3 rounded-full bg-surface-container-highest border border-outline-variant"></div>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-secondary block">Friday</span>
+<p class="font-body-md text-body-md text-on-surface">Scholarship application</p>
+</div>
+</div>
+</div>
+</div>
+<!-- C. CAREER PROGRESS -->
+<div class="bg-surface-container-lowest rounded-xl p-lg card-shadow border border-slate-100">
+<div class="flex items-center justify-between mb-md">
+<h3 class="font-label-md text-label-md text-secondary uppercase tracking-wider">Career Progress</h3>
+<span class="font-label-md text-label-md text-primary bg-primary-container/10 px-2 py-1 rounded-md">78% Profile</span>
+</div>
+<div class="relative w-full aspect-square flex items-center justify-center p-md bg-surface-bright rounded-lg border border-slate-50">
+<!-- Simplified Radar Chart SVG Representation -->
+<svg class="w-full h-full max-w-[200px]" viewbox="0 0 100 100">
+<!-- Grid -->
+<polygon class="radar-axis" fill="none" points="50,10 90,50 50,90 10,50"></polygon>
+<polygon class="radar-axis" fill="none" points="50,20 80,50 50,80 20,50"></polygon>
+<polygon class="radar-axis" fill="none" points="50,30 70,50 50,70 30,50"></polygon>
+<polygon class="radar-axis" fill="none" points="50,40 60,50 50,60 40,50"></polygon>
+<!-- Axes -->
+<line class="radar-axis" x1="50" x2="50" y1="10" y2="90"></line>
+<line class="radar-axis" x1="10" x2="90" y1="50" y2="50"></line>
+<!-- Data Polygon (Research: High, Finance: Med, Quant: Med, Writing: High) -->
+<polygon class="radar-polygon" points="50,20 75,50 50,65 15,50"></polygon>
+<!-- Labels -->
+<text fill="#565e74" font-family="Inter" font-size="6" font-weight="600" text-anchor="middle" x="50" y="8">Research</text>
+<text fill="#565e74" font-family="Inter" font-size="6" font-weight="600" text-anchor="start" x="92" y="52">Finance</text>
+<text fill="#565e74" font-family="Inter" font-size="6" font-weight="600" text-anchor="middle" x="50" y="96">Quant</text>
+<text fill="#565e74" font-family="Inter" font-size="6" font-weight="600" text-anchor="end" x="8" y="52">Writing</text>
+</svg>
+</div>
+</div>
+<!-- D. NEXORA MONEY -->
+<div class="bg-surface-container-lowest rounded-xl p-lg card-shadow border border-slate-100">
+<h3 class="font-label-md text-label-md text-secondary uppercase tracking-wider mb-md">Nexora Money</h3>
+<div class="space-y-md">
+<div>
+<p class="font-label-sm text-label-sm text-secondary mb-1">Savings Goal: Higher Education</p>
+<div class="flex items-end justify-between">
+<span class="font-headline-md text-headline-md text-on-surface">₹38,000</span>
+<span class="font-body-md text-body-md text-secondary">/ ₹1,50,000</span>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-container rounded-full" style="width: 25%"></div>
+</div>
+<!-- Mini Trend Chart Area -->
+<div class="h-16 w-full mt-sm relative overflow-hidden rounded-md bg-surface-bright">
+<svg class="w-full h-full preserve-aspect-ratio-none absolute bottom-0" viewbox="0 0 100 40">
+<path class="chart-area" d="M0,40 L0,30 C20,28 40,20 60,25 C80,30 90,15 100,10 L100,40 Z"></path>
+<path class="chart-line" d="M0,30 C20,28 40,20 60,25 C80,30 90,15 100,10"></path>
+</svg>
+<span class="absolute top-2 right-2 font-label-sm text-label-sm text-tertiary flex items-center gap-1 bg-surface-container-lowest/80 px-1 rounded">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> Moderate Growth
+                            </span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

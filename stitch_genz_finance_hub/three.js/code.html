@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+<!-- STITCH_THREEJS_START:ANIMATION_5 class="fixed inset-0 w-full h-full bg-transparent" -->
+<div class="fixed inset-0 w-full h-full bg-transparent" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_5" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_5');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  const width = container.clientWidth || window.innerWidth;
+const height = container.clientHeight || window.innerHeight;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+
+renderer.setSize(width, height);
+renderer.setPixelRatio(window.devicePixelRatio);
+container.appendChild(renderer.domElement);
+
+// Lighting
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+scene.add(ambientLight);
+const pointLight = new THREE.PointLight(0x6750A4, 1);
+pointLight.position.set(5, 5, 5);
+scene.add(pointLight);
+
+// Group to hold the "Graph"
+const graphGroup = new THREE.Group();
+scene.add(graphGroup);
+
+// Create animated bars for a "Growth" look
+const barCount = 5;
+const bars = [];
+for (let i = 0; i < barCount; i++) {
+    const geometry = new THREE.BoxGeometry(0.5, 1, 0.5);
+    const material = new THREE.MeshPhongMaterial({ 
+        color: 0x6750A4,
+        shininess: 100,
+        transparent: true,
+        opacity: 0.9
+    });
+    const bar = new THREE.Mesh(geometry, material);
+    bar.position.x = (i - (barCount - 1) / 2) * 0.8;
+    bar.scale.y = 0.1 + (i * 0.5); // Initial staggered height
+    bar.position.y = bar.scale.y / 2;
+    graphGroup.add(bar);
+    bars.push(bar);
+}
+
+camera.position.z = 5;
+camera.position.y = 1;
+camera.lookAt(0, 1, 0);
+
+function animate() {
+    requestAnimationFrame(animate);
+    
+    const time = Date.now() * 0.002;
+    
+    bars.forEach((bar, i) => {
+        const targetScale = 0.5 + Math.sin(time + i * 0.5) * 0.3 + (i * 0.4);
+        bar.scale.y = THREE.MathUtils.lerp(bar.scale.y, targetScale, 0.1);
+        bar.position.y = bar.scale.y / 2;
+    });
+    
+    graphGroup.rotation.y += 0.005;
+    
+    renderer.render(scene, camera);
+}
+
+animate();
+
+window.addEventListener('resize', () => {
+    const newWidth = container.clientWidth || window.innerWidth;
+    const newHeight = container.clientHeight || window.innerHeight;
+    camera.aspect = newWidth / newHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(newWidth, newHeight);
+});
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_5 -->
+</body>
+</html>

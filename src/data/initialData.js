@@ -1,0 +1,777 @@
+// NEXORA Core Datasets & Demo Seed Data
+
+export const PERSONA_PRESETS = [
+  {
+    id: "persona-aarav",
+    name: "Aarav Sharma",
+    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+    college: "St. Stephen's College, Delhi University",
+    degree: "B.A. (Hons) Economics & Public Policy",
+    year: "3rd Year (Final Year)",
+    academicGpa: "8.8 / 10",
+    bio: "Passionate about economic policy, developmental economics, and public administration. Aiming to bridge quantitative data with governance.",
+    availableHours: 10,
+    preferredLocation: "Delhi NCR / Remote",
+    remoteOnly: false,
+    timeline: "Next 6-12 Months (Graduation 2027)",
+    skills: [
+      { name: "Policy Analysis", level: "Advanced", score: 90 },
+      { name: "Economic Research", level: "Advanced", score: 88 },
+      { name: "Excel & Data Modeling", level: "Intermediate", score: 78 },
+      { name: "Academic Writing", level: "Advanced", score: 92 },
+      { name: "Stata / Econometrics", level: "Beginner", score: 45 },
+      { name: "Public Speaking", level: "Intermediate", score: 75 }
+    ],
+    experience: [
+      {
+        title: "Research Intern",
+        organization: "NITI Aayog (Development Monitoring Evaluation Office)",
+        period: "May 2025 - Jul 2025",
+        type: "Internship",
+        description: "Assisted in state-level health index policy briefs and cross-sectional data synthesis."
+      },
+      {
+        title: "President, Economics Society",
+        organization: "St. Stephen's College",
+        period: "Aug 2024 - Present",
+        type: "Leadership",
+        description: "Organized annual policy summit hosting 40+ colleges and published the bi-annual journal."
+      }
+    ],
+    targetCareers: ["policy-analyst", "rbi-grade-b", "upsc-civil-services"],
+    preferences: {
+      income: 75,
+      stability: 85,
+      impact: 95,
+      flexibility: 60,
+      learning: 90,
+      entrepreneurship: 40,
+      workLifeBalance: 70
+    },
+    financialGoals: {
+      enabled: true,
+      monthlyIncome: 12000,
+      monthlyExpenses: 7000,
+      monthlySavings: 5000,
+      primaryGoal: {
+        title: "Higher Education / Master's Prep Fund",
+        targetAmount: 150000,
+        currentAmount: 42000,
+        monthlyContribution: 4000,
+        targetDate: "2027-06-30"
+      },
+      emergencyFund: {
+        targetAmount: 30000,
+        currentAmount: 18000
+      }
+    }
+  },
+  {
+    id: "persona-priya",
+    name: "Priya Patel",
+    avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80",
+    college: "BITS Pilani",
+    degree: "B.Tech Computer Science & Artificial Intelligence",
+    year: "4th Year",
+    academicGpa: "9.2 / 10",
+    bio: "Deep learning enthusiast working on LLM reasoning and multimodal neural networks. Looking for high-impact AI research labs & venture-backed tech startups.",
+    availableHours: 15,
+    preferredLocation: "Bengaluru / Hyderabad / Remote",
+    remoteOnly: false,
+    timeline: "Immediate (Graduation 2026)",
+    skills: [
+      { name: "Python", level: "Advanced", score: 95 },
+      { name: "PyTorch & Deep Learning", level: "Advanced", score: 90 },
+      { name: "LLM Fine-tuning & RAG", level: "Intermediate", score: 80 },
+      { name: "React & TypeScript", level: "Intermediate", score: 72 },
+      { name: "Data Structures & Algorithms", level: "Advanced", score: 88 },
+      { name: "Distributed Systems", level: "Beginner", score: 50 }
+    ],
+    experience: [
+      {
+        title: "AI Research Fellow",
+        organization: "Indian Institute of Science (IISc)",
+        period: "Jan 2025 - Jun 2025",
+        type: "Research",
+        description: "Co-authored a paper on lightweight transformer pruning accepted at NeurIPS workshop."
+      },
+      {
+        title: "Backend Engineering Intern",
+        organization: "Postman",
+        period: "May 2024 - Jul 2024",
+        type: "Internship",
+        description: "Built telemetry pipelines processing 200M+ API requests per day."
+      }
+    ],
+    targetCareers: ["ai-research-scientist", "product-management"],
+    preferences: {
+      income: 90,
+      stability: 60,
+      impact: 90,
+      flexibility: 85,
+      learning: 95,
+      entrepreneurship: 80,
+      workLifeBalance: 65
+    },
+    financialGoals: {
+      enabled: true,
+      monthlyIncome: 35000,
+      monthlyExpenses: 15000,
+      monthlySavings: 20000,
+      primaryGoal: {
+        title: "Seed Capital & Tech Equipment Fund",
+        targetAmount: 300000,
+        currentAmount: 110000,
+        monthlyContribution: 15000,
+        targetDate: "2026-12-31"
+      },
+      emergencyFund: {
+        targetAmount: 60000,
+        currentAmount: 45000
+      }
+    }
+  },
+  {
+    id: "persona-rohan",
+    name: "Rohan Mehta",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+    college: "Shri Ram College of Commerce (SRCC)",
+    degree: "B.Com (Hons) & Financial Markets",
+    year: "2nd Year",
+    academicGpa: "8.5 / 10",
+    bio: "Focusing on corporate valuation, venture capital deal flow, and quantitative finance. Preparing for CFA Level 1.",
+    availableHours: 8,
+    preferredLocation: "Mumbai / Bengaluru / Remote",
+    remoteOnly: false,
+    timeline: "Next 12-18 Months",
+    skills: [
+      { name: "Financial Modeling", level: "Advanced", score: 85 },
+      { name: "Valuation & DCF", level: "Intermediate", score: 75 },
+      { name: "Excel & VBA", level: "Advanced", score: 90 },
+      { name: "Accounting & IFRS", level: "Intermediate", score: 80 },
+      { name: "SQL & Data Extraction", level: "Beginner", score: 40 },
+      { name: "Pitch Deck Creation", level: "Intermediate", score: 70 }
+    ],
+    experience: [
+      {
+        title: "Junior Equity Research Analyst",
+        organization: "College Investment Fund",
+        period: "Oct 2024 - Present",
+        type: "Leadership",
+        description: "Covering Indian Banking and IT sectors; managed virtual ₹10L portfolio."
+      }
+    ],
+    targetCareers: ["investment-banking", "product-management", "rbi-grade-b"],
+    preferences: {
+      income: 95,
+      stability: 75,
+      impact: 70,
+      flexibility: 50,
+      learning: 85,
+      entrepreneurship: 70,
+      workLifeBalance: 45
+    },
+    financialGoals: {
+      enabled: true,
+      monthlyIncome: 8000,
+      monthlyExpenses: 4500,
+      monthlySavings: 3500,
+      primaryGoal: {
+        title: "CFA Level 1 Exam & Prep Registration",
+        targetAmount: 110000,
+        currentAmount: 35000,
+        monthlyContribution: 3000,
+        targetDate: "2026-11-30"
+      },
+      emergencyFund: {
+        targetAmount: 25000,
+        currentAmount: 12000
+      }
+    }
+  }
+];
+
+export const CAREER_PATHS = [
+  {
+    id: "policy-analyst",
+    title: "Policy Analyst & Think Tank Consultant",
+    category: "Public Policy & Governance",
+    icon: "landmark",
+    tagline: "Shape public legislation, socio-economic reforms, and developmental policies.",
+    fitScore: 94,
+    eligibility: "Bachelor's / Master's in Economics, Law, Public Policy, Political Science, or Engineering with analytical background.",
+    skillsRequired: ["Policy Analysis", "Economic Research", "Data Interpretation", "Academic Writing", "Stakeholder Engagement"],
+    prepEffort: "400 - 600 Hours (Research papers, policy briefs & case studies)",
+    timeline: "6 - 12 Months",
+    startingSalary: "₹7.5L - ₹14.0L / yr",
+    careerCeiling: "Partner / Senior Fellow / Chief Policy Officer (₹35L - ₹75L+ / yr)",
+    cost: "Low (Self-learning, open research papers, fellowship stipends)",
+    opportunityCost: "Low to Medium",
+    stability: 4,
+    flexibility: 4,
+    trajectory: "Research Associate → Policy Analyst → Senior Consultant → Director of Research / IAS Policy Advisor.",
+    whyAligned: "Matches your deep academic writing and economic research background. Allows rapid publication of high-impact briefs.",
+    skillGap: ["Stata / Advanced Econometrics", "Public Briefing Delivery"],
+    recommendedExperiments: [
+      {
+        title: "Draft a 1,200-word Policy Memo",
+        description: "Analyze the state budget allocation for EV infrastructure and submit to an open youth policy journal.",
+        timeNeeded: "4 Hours",
+        impact: "High portfolio proof"
+      },
+      {
+        title: "Review 3 CPR Policy Working Papers",
+        description: "Extract methodology sections and identify recurring empirical econometric models used.",
+        timeNeeded: "2 Hours",
+        impact: "Domain mastery"
+      }
+    ]
+  },
+  {
+    id: "rbi-grade-b",
+    title: "Reserve Bank of India (RBI) Grade B Officer",
+    category: "Central Banking & Financial Governance",
+    icon: "badge-cent",
+    tagline: "Manage India's monetary policy, banking regulation, and currency operations.",
+    fitScore: 89,
+    eligibility: "Graduation with minimum 60% marks (50% for SC/ST/PwBD). Age 21-30.",
+    skillsRequired: ["Economic & Social Issues", "Finance & Management", "Quantitative Aptitude", "Reasoning & English", "Monetary Economics"],
+    prepEffort: "800 - 1,200 Hours dedicated competitive preparation",
+    timeline: "10 - 18 Months",
+    startingSalary: "₹18.0L - ₹24.0L CTC (including perks, housing in prime metros)",
+    careerCeiling: "Executive Director / Deputy Governor (High administrative prestige)",
+    cost: "Low to Moderate (Standard books, mock test series ₹5K - ₹15K)",
+    opportunityCost: "Medium (Requires strict exam focus, but high syllabus overlap with NABARD/SEBI)",
+    stability: 5,
+    flexibility: 3,
+    trajectory: "Assistant Manager (Grade B) → Manager (Grade C) → Assistant General Manager (Grade D) → General Manager → Chief General Manager → Executive Director.",
+    whyAligned: "Strong synergy with your economics curriculum. Offers unmatched job stability, prestigious public impact, and competitive pay.",
+    skillGap: ["Financial Management Principles", "Timed Speed Arithmetic & Reasoning"],
+    recommendedExperiments: [
+      {
+        title: "Solve RBI Grade B Phase 2 2024 ESI Paper",
+        description: "Attempt the descriptive questions under a 90-minute timed timer to gauge answer structure.",
+        timeNeeded: "2.5 Hours",
+        impact: "Reality check on syllabus fit"
+      },
+      {
+        title: "Read RBI Annual Monetary Policy Report",
+        description: "Summarize the MPC's inflation projections and liquidity management framework.",
+        timeNeeded: "3 Hours",
+        impact: "Direct interview & phase 2 value"
+      }
+    ]
+  },
+  {
+    id: "upsc-civil-services",
+    title: "UPSC Civil Services (IAS / IFS / IPS / IRS)",
+    category: "Civil Administration & Diplomacy",
+    icon: "shield",
+    tagline: "Lead district administration, foreign diplomacy, national security, or revenue policy.",
+    fitScore: 82,
+    eligibility: "Bachelor's degree in any discipline from a recognized university. Age 21-32.",
+    skillsRequired: ["Broad General Studies", "Essay & Analytical Writing", "Optional Subject Mastery (Economics/PolSci)", "Ethics & Decision Making", "Crisis Management"],
+    prepEffort: "2,000 - 3,500 Hours over 1.5 - 3 years",
+    timeline: "18 - 36 Months",
+    startingSalary: "₹12.0L - ₹16.0L + Official Bungalow, Security, Medical & Transport",
+    careerCeiling: "Cabinet Secretary / Foreign Secretary / Chief Secretary (Pinnacle of executive power)",
+    cost: "Moderate (₹25K - ₹1.5L for coaching/test series, though open materials abound)",
+    opportunityCost: "Very High (Success rate < 0.2%, multi-year commitment with high variance)",
+    stability: 5,
+    flexibility: 1,
+    trajectory: "SDM / Under Secretary → District Magistrate / Deputy Secretary → Joint Secretary → Additional Secretary → Secretary to Government of India.",
+    whyAligned: "Matches your public impact ambition and strong writing ability. However, the opportunity cost is high compared to targeted direct entry paths.",
+    skillGap: ["Ancient/Medieval History & Geography Breadth", "High-Speed Answer Writing Discipline"],
+    recommendedExperiments: [
+      {
+        title: "Write 1 GS-2 Governance Answer (150 words)",
+        description: "Answer a previous year question on federalism and evaluate against the official marking criteria.",
+        timeNeeded: "1 Hour",
+        impact: "Assess daily writing stamina"
+      }
+    ]
+  },
+  {
+    id: "ai-research-scientist",
+    title: "AI / ML Research Scientist",
+    category: "Technology & Frontier AI",
+    icon: "brain-circuit",
+    tagline: "Invent new neural architectures, LLM reasoning algorithms, and generative AI systems.",
+    fitScore: 92,
+    eligibility: "B.Tech/M.S./Ph.D. in Computer Science, Mathematics, Physics or related fields with strong mathematical foundation.",
+    skillsRequired: ["PyTorch / JAX", "Linear Algebra & Calculus", "Distributed Training", "Paper Implementation", "Transformer Architectures"],
+    prepEffort: "1,000 - 1,800 Hours (Code implementations, open-source models, paper reproductions)",
+    timeline: "12 - 24 Months",
+    startingSalary: "₹18.0L - ₹45.0L+ / yr (Domestic) | $150K+ (Global)",
+    careerCeiling: "Distinguished Scientist / VP of AI / AI Startup Founder ($300K - $1M+)",
+    cost: "Low to Moderate (GPU compute credits ₹5K - ₹20K, open-source literature)",
+    opportunityCost: "Low (High demand for AI talent globally)",
+    stability: 3,
+    flexibility: 5,
+    trajectory: "Research Fellow → Applied Scientist → Research Scientist → Staff AI Scientist → VP of AI Research.",
+    whyAligned: "Explosive industry growth, massive global liquidity, and allows immediate translation of code into scientific breakthroughs.",
+    skillGap: ["CUDA Kernel Optimization", "Distributed Gradient Synchronization"],
+    recommendedExperiments: [
+      {
+        title: "Re-implement Attention Layer from Scratch in PyTorch",
+        description: "Write multi-head self-attention with tensor operations without using torch.nn.MultiheadAttention.",
+        timeNeeded: "3 Hours",
+        impact: "Core fundamentals mastery"
+      }
+    ]
+  },
+  {
+    id: "product-management",
+    title: "Product Manager (Associate PM → Group PM)",
+    category: "Technology & Business Strategy",
+    icon: "layers",
+    tagline: "Define the product vision, roadmap, and user experience at the intersection of business, tech, and UX.",
+    fitScore: 86,
+    eligibility: "Any undergraduate degree. Strong analytical, communication, and technical empathy required.",
+    skillsRequired: ["Product Strategy", "User Research & PRDs", "Data Analytics (SQL/Mixpanel)", "A/B Testing", "Cross-functional Leadership"],
+    prepEffort: "300 - 500 Hours (Product teardowns, mock interviews, side projects)",
+    timeline: "4 - 8 Months",
+    startingSalary: "₹14.0L - ₹28.0L / yr",
+    careerCeiling: "Chief Product Officer (CPO) / Founder (₹50L - ₹1.5Cr+)",
+    cost: "Low (Case studies, teardowns, books like Inspired & Cracking the PM Interview)",
+    opportunityCost: "Low",
+    stability: 3,
+    flexibility: 4,
+    trajectory: "APM → Product Manager → Senior PM → Lead PM → Director of Product → Chief Product Officer.",
+    whyAligned: "Balances analytical problem solving, user psychology, and commercial execution.",
+    skillGap: ["SQL Query Writing", "System Architecture & API concepts"],
+    recommendedExperiments: [
+      {
+        title: "Conduct a 1-Page Product Teardown",
+        description: "Analyze a friction point in Spotify or Zepto and write a PRD propose feature specs.",
+        timeNeeded: "2 Hours",
+        impact: "Portfolio artifact"
+      }
+    ]
+  },
+  {
+    id: "investment-banking",
+    title: "Investment Banking / FinTech Analyst",
+    category: "Finance & Deal Advisory",
+    icon: "trending-up",
+    tagline: "Advise on high-stakes M&A transactions, capital raises, and tech-driven financial structures.",
+    fitScore: 88,
+    eligibility: "Commerce, Finance, Economics, or Engineering degrees with strong numerical modeling skills.",
+    skillsRequired: ["Financial Modeling (DCF/LBO)", "Company Valuation", "M&A Analysis", "Pitch Deck Design", "Capital Markets Regulations"],
+    prepEffort: "500 - 800 Hours (Financial modeling bootcamps, CFA Level 1)",
+    timeline: "6 - 12 Months",
+    startingSalary: "₹15.0L - ₹32.0L / yr + performance bonus (30-100%)",
+    careerCeiling: "Managing Director / Partner / Private Equity Fund Manager (₹1Cr - ₹5Cr+)",
+    cost: "Moderate (CFA registration ₹1L, modeling courses ₹10K)",
+    opportunityCost: "Medium (Demanding 70-80 hr work weeks during peak deals)",
+    stability: 3,
+    flexibility: 2,
+    trajectory: "Analyst → Associate → VP → Director → Managing Director.",
+    whyAligned: "High financial compensation, accelerated business acumen, and strong pedigree for venture capital and executive roles.",
+    skillGap: ["LBO Modeling Speed", "Bloomberg Terminal Navigation"],
+    recommendedExperiments: [
+      {
+        title: "Build a 3-Statement Financial Model",
+        description: "Link Income Statement, Balance Sheet, and Cash Flow for a listed Indian retail company in Excel.",
+        timeNeeded: "4 Hours",
+        impact: "Proof of technical capability"
+      }
+    ]
+  }
+];
+
+export const OPPORTUNITIES_DATABASE = [
+  {
+    id: "opp-001",
+    title: "Policy Research Fellowship (Development Economics)",
+    organization: "Centre for Policy Research (CPR)",
+    category: "Internships",
+    type: "Internship",
+    matchScore: 94,
+    deadline: "2026-08-28",
+    daysLeft: 10,
+    location: "New Delhi (Hybrid)",
+    isRemote: true,
+    stipend: "₹35,000 / month",
+    verifiedSource: true,
+    sourceUrl: "https://cprindia.org/careers",
+    tags: ["Economics", "Public Policy", "Research", "Stata"],
+    targetCareerIds: ["policy-analyst", "rbi-grade-b"],
+    eligibility: "Enrolled in 3rd/4th year UG or PG in Economics, Public Policy, or Statistics with min 65% aggregate.",
+    description: "Work alongside senior fellows on empirical analysis of agricultural credit subsidies and rural livelihood welfare outcomes. You will clean household survey datasets and draft policy briefs for ministry review.",
+    requiredSkills: ["Policy Analysis", "Economic Research", "Excel & Data Modeling", "Academic Writing"],
+    documentsRequired: ["Updated Resume (PDF)", "Statement of Purpose (500 words)", "Recent Writing Sample on Economic Policy"],
+    estimatedTimeMinutes: 25,
+    whyRecommended: "This opportunity directly aligns with your policy analyst goal and closes your current practical empirical research gap.",
+    expectedValue: "Publication credit in a CPR Working Paper, direct mentorship from ex-Chief Economic Advisor researchers, and strong recommendation letters for Master's programs.",
+    skillMatchPercent: 92,
+    careerAlignmentPercent: 96,
+    eligibilityPercent: 100,
+    timeFeasibilityPercent: 90,
+    opportunityQualityPercent: 98
+  },
+  {
+    id: "opp-002",
+    title: "RBI Young Professional (Monetary Policy & Data Analysis)",
+    organization: "Reserve Bank of India (RBI)",
+    category: "Government Programs",
+    type: "Government Program",
+    matchScore: 91,
+    deadline: "2026-09-05",
+    daysLeft: 18,
+    location: "Mumbai (On-site)",
+    isRemote: false,
+    stipend: "₹60,000 / month",
+    verifiedSource: true,
+    sourceUrl: "https://opportunities.rbi.org.in",
+    tags: ["Central Banking", "Monetary Economics", "Government", "Finance"],
+    targetCareerIds: ["rbi-grade-b", "policy-analyst", "investment-banking"],
+    eligibility: "Post-graduate degree or 4-year integrated degree in Economics, Econometrics, Quantitative Finance, or MBA Finance.",
+    description: "Assist the Monetary Policy Department in high-frequency financial indicators tracking, inflation modeling, and inter-bank liquidity flow assessments.",
+    requiredSkills: ["Economic Research", "Excel & Data Modeling", "Stata / Econometrics", "Academic Writing"],
+    documentsRequired: ["Resume", "Transcripts", "Letter of Recommendation", "NOC from University"],
+    estimatedTimeMinutes: 40,
+    whyRecommended: "Unrivalled institutional prestige directly relevant to your RBI Grade B ambitions and macro-finance interest.",
+    expectedValue: "Official RBI certificate of completion, immersive understanding of central banking mechanics, and direct exposure to MPC working papers.",
+    skillMatchPercent: 88,
+    careerAlignmentPercent: 95,
+    eligibilityPercent: 90,
+    timeFeasibilityPercent: 85,
+    opportunityQualityPercent: 100
+  },
+  {
+    id: "opp-003",
+    title: "NITI Aayog Internship Scheme (Governance & Policy)",
+    organization: "NITI Aayog (Govt. of India)",
+    category: "Government Programs",
+    type: "Internship",
+    matchScore: 89,
+    deadline: "2026-09-10",
+    daysLeft: 23,
+    location: "New Delhi",
+    isRemote: false,
+    stipend: "Unpaid / Official Gov Certificate",
+    verifiedSource: true,
+    sourceUrl: "https://niti.gov.in/internship",
+    tags: ["Governance", "NITI Aayog", "Public Policy", "Government"],
+    targetCareerIds: ["policy-analyst", "upsc-civil-services"],
+    eligibility: "UG/PG students studying in recognized universities with min 85% in Class 12 or 75% in UG.",
+    description: "Support vertical divisions (Education, Health, Aspirational Districts, Circular Economy) in monitoring state-level KPI progress and policy frameworks.",
+    requiredSkills: ["Policy Analysis", "Academic Writing", "Excel & Data Modeling"],
+    documentsRequired: ["College Endorsement Form", "Resume", "ID Proof"],
+    estimatedTimeMinutes: 20,
+    whyRecommended: "Prime government exposure, networking with IAS officers and national policy advisors.",
+    expectedValue: "Official NITI Aayog experience credential, direct understanding of national state schemes.",
+    skillMatchPercent: 90,
+    careerAlignmentPercent: 92,
+    eligibilityPercent: 95,
+    timeFeasibilityPercent: 88,
+    opportunityQualityPercent: 94
+  },
+  {
+    id: "opp-004",
+    title: "Reliance Foundation Undergraduate & PG Scholarship",
+    organization: "Reliance Foundation",
+    category: "Scholarships",
+    type: "Scholarship",
+    matchScore: 88,
+    deadline: "2026-09-15",
+    daysLeft: 28,
+    location: "Pan-India",
+    isRemote: true,
+    stipend: "Up to ₹2,00,000 grant",
+    verifiedSource: true,
+    sourceUrl: "https://scholarships.reliancefoundation.org",
+    tags: ["Grant", "Merit-cum-Means", "Higher Education", "Financial Support"],
+    targetCareerIds: ["policy-analyst", "rbi-grade-b", "ai-research-scientist", "investment-banking"],
+    eligibility: "Resident Indian citizen enrolled in 1st/2nd/3rd year full-time UG/PG degree. Family income < ₹15 Lakhs/yr.",
+    description: "Merit-cum-means scholarship supporting ambitious students across STEM, Economics, Commerce, and Humanities with financial grants and leadership development programs.",
+    requiredSkills: ["Academic Writing", "Public Speaking"],
+    documentsRequired: ["Income Certificate", "Marksheets 10th/12th/College", "College ID", "Bank Account Details"],
+    estimatedTimeMinutes: 35,
+    whyRecommended: "Directly solves your Higher Education savings milestone by covering up to ₹2,00,000 in tuition and prep fees.",
+    expectedValue: "Non-repayable direct financial grant + access to Reliance Foundation alumni network and mentorship summits.",
+    skillMatchPercent: 85,
+    careerAlignmentPercent: 88,
+    eligibilityPercent: 100,
+    timeFeasibilityPercent: 92,
+    opportunityQualityPercent: 96
+  },
+  {
+    id: "opp-005",
+    title: "Google AI Research Mentorship Program",
+    organization: "Google Research India",
+    category: "Research",
+    type: "Research Mentorship",
+    matchScore: 93,
+    deadline: "2026-09-01",
+    daysLeft: 14,
+    location: "Bengaluru (Hybrid / Remote)",
+    isRemote: true,
+    stipend: "₹50,000 / month + Compute Credits",
+    verifiedSource: true,
+    sourceUrl: "https://research.google/locations/india",
+    tags: ["AI", "Machine Learning", "PyTorch", "Research"],
+    targetCareerIds: ["ai-research-scientist", "product-management"],
+    eligibility: "Final year UG or MS/PhD students with demonstrable deep learning background and open GitHub repositories.",
+    description: "Pair with Google Research scientists on novel neural networks, multilingual NLP models for Indic languages, or responsible AI frameworks.",
+    requiredSkills: ["Python", "PyTorch & Deep Learning", "Data Structures & Algorithms"],
+    documentsRequired: ["GitHub Profile", "Resume", "Research Statement (1 Page)", "Coding Samples"],
+    estimatedTimeMinutes: 30,
+    whyRecommended: "Premier tier-1 research environment, unlocks fast-track interviews for full-time Research Scientist roles.",
+    expectedValue: "Co-authorship potential at ACL / EMNLP / CVPR conferences and direct letter of recommendation from Google Research Directors.",
+    skillMatchPercent: 94,
+    careerAlignmentPercent: 98,
+    eligibilityPercent: 95,
+    timeFeasibilityPercent: 90,
+    opportunityQualityPercent: 100
+  },
+  {
+    id: "opp-006",
+    title: "Goldman Sachs Global Investment Research Internship",
+    organization: "Goldman Sachs",
+    category: "Internships",
+    type: "Internship",
+    matchScore: 90,
+    deadline: "2026-09-20",
+    daysLeft: 33,
+    location: "Bengaluru / Mumbai",
+    isRemote: false,
+    stipend: "₹1,00,000 / month",
+    verifiedSource: true,
+    sourceUrl: "https://www.goldmansachs.com/careers",
+    tags: ["Investment Banking", "Equity Research", "Financial Modeling", "Valuation"],
+    targetCareerIds: ["investment-banking", "rbi-grade-b", "product-management"],
+    eligibility: "Penultimate or final year undergraduate students in Economics, Finance, Engineering, or Commerce.",
+    description: "Provide fundamental analysis on publicly listed companies, build detailed discounted cash flow (DCF) models, and write thematic sector notes.",
+    requiredSkills: ["Financial Modeling", "Valuation & DCF", "Excel & VBA", "Accounting & IFRS"],
+    documentsRequired: ["Resume (Single Page)", "Academic Transcripts", "Cover Letter"],
+    estimatedTimeMinutes: 30,
+    whyRecommended: "High brand equity, fast-track pre-placement offer (PPO) potential, and immersive financial training.",
+    expectedValue: "Exceptional compensation, high-prestige stamp on resume, and direct transition into full-time Investment Banking Analyst.",
+    skillMatchPercent: 88,
+    careerAlignmentPercent: 94,
+    eligibilityPercent: 92,
+    timeFeasibilityPercent: 85,
+    opportunityQualityPercent: 99
+  }
+];
+
+export function generateFullOpportunitiesDatabase() {
+  const categories = [
+    "Internships", "Jobs", "Scholarships", "Fellowships",
+    "Competitions", "Hackathons", "Research", "Government Programs",
+    "Courses", "Certifications", "Volunteering", "Entrepreneurship"
+  ];
+  
+  const orgs = [
+    { name: "Centre for Policy Research", cat: "Internships", loc: "New Delhi", remote: true },
+    { name: "Reserve Bank of India", cat: "Government Programs", loc: "Mumbai", remote: false },
+    { name: "NITI Aayog", cat: "Government Programs", loc: "New Delhi", remote: false },
+    { name: "Reliance Foundation", cat: "Scholarships", loc: "Pan-India", remote: true },
+    { name: "Google Research India", cat: "Research", loc: "Bengaluru", remote: true },
+    { name: "Goldman Sachs", cat: "Internships", loc: "Bengaluru", remote: false },
+    { name: "Ashoka University", cat: "Fellowships", loc: "Sonipat", remote: false },
+    { name: "Ministry of Education", cat: "Hackathons", loc: "Pan-India", remote: false },
+    { name: "Indian Statistical Institute", cat: "Courses", loc: "Online", remote: true },
+    { name: "Tata Trusts", cat: "Volunteering", loc: "Ranchi", remote: true },
+    { name: "McKinsey & Company", cat: "Certifications", loc: "Online", remote: true },
+    { name: "Startup India", cat: "Entrepreneurship", loc: "Hybrid", remote: true },
+    { name: "ISRO Space Applications Centre", cat: "Research", loc: "Ahmedabad", remote: false },
+    { name: "Microsoft Research India", cat: "Research", loc: "Bengaluru", remote: true },
+    { name: "Boston Consulting Group (BCG)", cat: "Internships", loc: "Mumbai", remote: false },
+    { name: "PM Research Fellowship (PMRF)", cat: "Fellowships", loc: "IITs / IISc", remote: false },
+    { name: "Aditya Birla Group Scholarship", cat: "Scholarships", loc: "Pan-India", remote: true },
+    { name: "SEBI (Securities and Exchange Board)", cat: "Government Programs", loc: "Mumbai", remote: false },
+    { name: "Kaggle Grandmaster League", cat: "Competitions", loc: "Online", remote: true },
+    { name: "JP Morgan Chase", cat: "Internships", loc: "Mumbai", remote: false }
+  ];
+
+  const fullList = [...OPPORTUNITIES_DATABASE];
+
+  let idCounter = 7;
+  for (let i = 0; i < 94; i++) {
+    const org = orgs[i % orgs.length];
+    const cat = categories[i % categories.length];
+    const month = (i % 3) + 9;
+    const day = (i * 3 % 27) + 1;
+    const deadlineStr = `2026-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+    const matchScore = 70 + ((i * 7 + 13) % 28);
+    const stipendVal = (i % 3 === 0) ? `₹${(20 + (i % 5) * 15)},000 / mo` : (i % 3 === 1 ? `₹${(50 + (i % 10) * 10)},000 grant` : "Fully Funded");
+
+    fullList.push({
+      id: `opp-${idCounter.toString().padStart(3, '0')}`,
+      title: `${cat === 'Courses' ? 'Mastering ' : ''}${org.name} ${cat.slice(0, -1)} Initiative ${2026 + (i % 2)}`,
+      organization: org.name,
+      category: cat,
+      type: cat.slice(0, -1),
+      matchScore: matchScore,
+      deadline: deadlineStr,
+      daysLeft: Math.max(3, 10 + i * 2),
+      location: org.loc,
+      isRemote: org.remote || (i % 2 === 0),
+      stipend: stipendVal,
+      verifiedSource: true,
+      sourceUrl: `https://${org.name.toLowerCase().replace(/[^a-z0-9]/g, '')}.org/apply`,
+      tags: [org.cat, "Verified", "Priority", "2026"],
+      targetCareerIds: ["policy-analyst", "rbi-grade-b", "ai-research-scientist", "product-management", "investment-banking"],
+      eligibility: "Open to eligible university students in enrolled undergraduate or postgraduate programs.",
+      description: `Structured high-impact engagement provided by ${org.name} for career development, analytical capability building, and institutional networking.`,
+      requiredSkills: ["Academic Writing", "Excel & Data Modeling", "Public Speaking"],
+      documentsRequired: ["Resume", "Statement of Purpose", "Academic Records"],
+      estimatedTimeMinutes: 20 + (i % 25),
+      whyRecommended: `Demonstrates strong relevance for analytical career paths and expands your portfolio in ${org.loc}.`,
+      expectedValue: "Institutional accreditation, mentorship, and high-impact resume enhancement.",
+      skillMatchPercent: matchScore - 2,
+      careerAlignmentPercent: matchScore + 1,
+      eligibilityPercent: 95,
+      timeFeasibilityPercent: 90,
+      opportunityQualityPercent: 94
+    });
+    idCounter++;
+  }
+
+  return fullList;
+}
+
+export const INITIAL_WEEKLY_PLAN = [
+  {
+    id: "task-w1",
+    type: "TOP PRIORITY",
+    categoryBadge: "Application",
+    title: "Apply for CPR Policy Research Fellowship",
+    deadline: "28 Aug (4 days left)",
+    estimatedHours: 1.5,
+    completed: false,
+    opportunityId: "opp-001",
+    tagline: "Submit tailored SOP + 1 writing sample",
+    priorityRank: 1
+  },
+  {
+    id: "task-w2",
+    type: "SKILL",
+    categoryBadge: "2-Hour Sprint",
+    title: "Complete ISI Stata Econometrics Module 1",
+    deadline: "30 Aug",
+    estimatedHours: 2.0,
+    completed: false,
+    opportunityId: "opp-009",
+    tagline: "Finish regression diagnostics exercises",
+    priorityRank: 2
+  },
+  {
+    id: "task-w3",
+    type: "CAREER",
+    categoryBadge: "Career Decision",
+    title: "Conduct 30-min Informational Chat with RBI Grade B Officer",
+    deadline: "01 Sep",
+    estimatedHours: 1.0,
+    completed: true,
+    tagline: "Ask about Phase 2 prep balancing with college",
+    priorityRank: 3
+  },
+  {
+    id: "task-w4",
+    type: "FINANCE",
+    categoryBadge: "Savings Milestone",
+    title: "Transfer ₹1,000 to Higher Ed SIP Goal",
+    deadline: "31 Aug",
+    estimatedHours: 0.5,
+    completed: true,
+    tagline: "Keep education emergency reserve funded",
+    priorityRank: 4
+  },
+  {
+    id: "task-w5",
+    type: "DEADLINE",
+    categoryBadge: "Scholarship",
+    title: "Verify Reliance Foundation Income Certificate with College",
+    deadline: "05 Sep",
+    estimatedHours: 1.0,
+    completed: false,
+    opportunityId: "opp-004",
+    tagline: "Obtain administrative seal on family declaration",
+    priorityRank: 5
+  }
+];
+
+export const INITIAL_APPLICATIONS = [
+  {
+    id: "app-001",
+    opportunityId: "opp-001",
+    organization: "Centre for Policy Research",
+    position: "Policy Research Fellowship",
+    stage: "Considering",
+    deadline: "2026-08-28",
+    appliedDate: null,
+    notes: "Drafted SOP; need to review economic analysis writing sample on rural credit.",
+    matchScore: 94,
+    documents: ["CPR_SOP_Draft.pdf", "Aarav_CV_Policy.pdf"]
+  },
+  {
+    id: "app-002",
+    opportunityId: "opp-003",
+    organization: "NITI Aayog",
+    position: "Governance Internship - DMEO",
+    stage: "Applied",
+    deadline: "2026-09-10",
+    appliedDate: "2026-08-15",
+    notes: "Submitted through official portal. Awaiting divisional allocation confirmation.",
+    matchScore: 89,
+    documents: ["NITI_NOC_College.pdf", "Resume_V3.pdf"]
+  },
+  {
+    id: "app-003",
+    opportunityId: "opp-004",
+    organization: "Reliance Foundation",
+    position: "Undergraduate Excellence Scholarship",
+    stage: "Saved",
+    deadline: "2026-09-15",
+    appliedDate: null,
+    notes: "Need father's ITR acknowledgement form for income verification.",
+    matchScore: 88,
+    documents: []
+  }
+];
+
+export const INITIAL_NOTIFICATIONS = [
+  {
+    id: "notif-1",
+    title: "Deadline Alert: CPR Fellowship",
+    message: "Application deadline for Centre for Policy Research closes in 4 days.",
+    timestamp: "10 mins ago",
+    read: false,
+    type: "urgent",
+    actionTarget: "opportunities",
+    targetId: "opp-001"
+  },
+  {
+    id: "notif-2",
+    title: "Recommendation Updated",
+    message: "Nexora AI re-ranked 7 strong matches based on your updated Stata skill proficiency.",
+    timestamp: "2 hours ago",
+    read: false,
+    type: "info",
+    actionTarget: "dashboard"
+  },
+  {
+    id: "notif-3",
+    title: "Weekly Milestone Streak 🔥",
+    message: "You have completed 2 of 5 actions for this week. 4 hours remaining.",
+    timestamp: "Yesterday",
+    read: true,
+    type: "success",
+    actionTarget: "weekly"
+  }
+];
+
+export const BILLING_INVOICES = [
+  {
+    id: "INV-2026-0801",
+    date: "01 Aug 2026",
+    plan: "Nexora Pro (Annual)",
+    amount: "₹3,999",
+    status: "Paid",
+    downloadUrl: "#invoice-pdf"
+  }
+];

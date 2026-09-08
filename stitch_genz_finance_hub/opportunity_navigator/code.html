@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexora - Opportunity Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-tint": "#0053db",
+                      "tertiary-fixed-dim": "#4edea3",
+                      "background": "#f8f9ff",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "surface-dim": "#cbdbf5",
+                      "on-secondary-fixed-variant": "#3f465c",
+                      "surface-background": "#F8FAFC",
+                      "surface-container-lowest": "#ffffff",
+                      "outline-variant": "#c3c6d7",
+                      "secondary": "#565e74",
+                      "on-error": "#ffffff",
+                      "on-surface": "#0b1c30",
+                      "inverse-primary": "#b4c5ff",
+                      "on-background": "#0b1c30",
+                      "surface-container-high": "#dce9ff",
+                      "surface-bright": "#f8f9ff",
+                      "on-surface-variant": "#434655",
+                      "on-primary-container": "#eeefff",
+                      "error": "#ba1a1a",
+                      "on-primary-fixed": "#00174b",
+                      "on-tertiary-fixed-variant": "#005236",
+                      "on-tertiary-fixed": "#002113",
+                      "border-subtle": "#E2E8F0",
+                      "on-tertiary": "#ffffff",
+                      "alert-amber": "#F59E0B",
+                      "on-primary": "#ffffff",
+                      "tertiary-container": "#007d55",
+                      "secondary-fixed": "#dae2fd",
+                      "on-secondary-fixed": "#131b2e",
+                      "surface-container-low": "#eff4ff",
+                      "surface": "#f8f9ff",
+                      "primary": "#004ac6",
+                      "secondary-container": "#dae2fd",
+                      "surface-container-highest": "#d3e4fe",
+                      "surface-variant": "#d3e4fe",
+                      "outline": "#737686",
+                      "secondary-fixed-dim": "#bec6e0",
+                      "on-tertiary-container": "#bdffdb",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-container": "#5c647a",
+                      "tertiary": "#006242",
+                      "surface-container": "#e5eeff",
+                      "indigo-depth": "#1E1B4B",
+                      "inverse-surface": "#213145",
+                      "inverse-on-surface": "#eaf1ff",
+                      "error-container": "#ffdad6",
+                      "tertiary-fixed": "#6ffbbe",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "on-error-container": "#93000a",
+                      "primary-fixed": "#dbe1ff",
+                      "primary-container": "#2563eb"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "md": "16px",
+                      "xs": "4px",
+                      "container-max": "1200px",
+                      "sm": "8px",
+                      "xl": "40px",
+                      "xxl": "64px",
+                      "margin-mobile": "16px",
+                      "gutter": "24px",
+                      "base": "4px",
+                      "lg": "24px"
+              },
+              "fontFamily": {
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-lg-mobile": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Plus Jakarta Sans"
+                      ]
+              },
+              "fontSize": {
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+          .shadow-ambient {
+              box-shadow: 0px 4px 20px rgba(15, 23, 42, 0.05);
+          }
+      </style>
+</head>
+<body class="bg-surface-background text-on-surface font-body-md min-h-screen flex text-body-md">
+<!-- SideNavBar (Desktop Only) -->
+<nav class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 py-lg px-md bg-surface-container-low border-r border-outline-variant z-40">
+<div class="flex items-center gap-md mb-xl px-sm">
+<img class="w-8 h-8 object-contain" data-alt="A highly precise, minimalist geometric logo representing artificial intelligence and navigation, rendered in pristine white and deep intelligence blue on a transparent background, perfect for a high-end corporate dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFLnKokGj2SSoZ1U4axkEooS8rRqcWpiEUGUWEnXRS-pmXaTwiGB_C78VBHWlMFA0jpOo4sA5wnMv08ba-HzednkRyu4hgMznKtPzJGlCK_kXRrVVsLSuN4EHbD70BLbMGkzh0Ii4jqULbnx6Jlq-En5snOLuuWu5nitopuJsyzojpRTv9TP3FME161ltC1aAipSGuxsd-6QEpRkrmYwag9HG18BApWsi0n-0tqtG_vKwO7g7pFPAr7A"/>
+<div>
+<h1 class="text-headline-md font-headline-md text-primary tracking-tight">Nexora</h1>
+<p class="text-label-sm font-label-sm text-on-surface-variant">AI Navigator</p>
+</div>
+</div>
+<button class="bg-primary text-on-primary rounded-lg py-sm px-md font-label-md text-label-md flex items-center justify-center gap-sm mb-xl shadow-ambient hover:bg-surface-tint transition-colors duration-200 w-full">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">add</span>
+            New Analysis
+        </button>
+<div class="flex flex-col gap-sm flex-1">
+<a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-high transition-all duration-200 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md bg-primary-container text-on-primary-container rounded-lg px-md py-sm font-bold shadow-sm transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="text-label-md font-label-md">Navigator</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-high transition-all duration-200 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">work</span>
+<span class="text-label-md font-label-md">Career</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-high transition-all duration-200 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">payments</span>
+<span class="text-label-md font-label-md">Money</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-high transition-all duration-200 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">description</span>
+<span class="text-label-md font-label-md">Applications</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-high transition-all duration-200 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">flag</span>
+<span class="text-label-md font-label-md">Goals</span>
+</a>
+</div>
+<div class="flex flex-col gap-sm mt-auto pt-lg border-t border-outline-variant">
+<a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-high transition-all duration-200 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-high transition-all duration-200 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">help</span>
+<span class="text-label-md font-label-md">Help</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 w-full relative">
+<!-- TopNavBar (Mobile Only) -->
+<header class="md:hidden flex justify-between items-center px-lg w-full sticky top-0 z-50 h-16 bg-surface-container-lowest shadow-sm">
+<h1 class="text-headline-md font-headline-md text-primary tracking-tight">Nexora</h1>
+<div class="flex items-center gap-md">
+<button class="text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200 rounded-full p-sm cursor-pointer active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+<img class="w-8 h-8 rounded-full object-cover cursor-pointer active:scale-95" data-alt="A professional headshot of a young executive looking confidently into the camera, clear lighting, modern corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjDp8GIaXfCQ6FfF61Wvx1ZXZBYoDvIawkUNKDjBM6Q7tuTYYUDFfvxDIc_gdlYAgQPknF3Y-U9xVP9yntFb4OArriN9BW7YfMM9dglmzjRiKvNC78DuQFHmIwGGNOIiGvVN2hQibL5Dof9U0E1NBvuSu93KT-deGPN15mrEnNMiBCpKUZroai_KetI2EsPsGzMTFctLELhCLRHm3WnW6sbm71XVRcnP4rNLbJHWeS-geZKqMQ6t8L_A"/>
+</div>
+</header>
+<!-- Page Header & Search -->
+<section class="pt-xxl pb-xl px-margin-mobile md:px-xxl max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-xl gap-lg">
+<div>
+<h2 class="text-display-lg font-display-lg text-on-surface mb-sm">Opportunity Intelligence</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-2xl">Discover algorithmically matched career and educational opportunities tailored to your precise trajectory.</p>
+</div>
+</div>
+<!-- Search and Filter Bar -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-ambient border border-border-subtle flex flex-col md:flex-row gap-md items-center">
+<div class="relative w-full md:flex-1">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline" style="font-variation-settings: 'FILL' 0;">search</span>
+<input class="w-full bg-surface-background border border-border-subtle rounded-lg py-sm pl-xl pr-md text-body-md focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary-fixed-dim transition-all" placeholder="Search internships, roles, or programs..." type="text"/>
+</div>
+<div class="flex gap-md w-full md:w-auto overflow-x-auto pb-xs md:pb-0 scrollbar-hide">
+<select class="bg-surface-background border border-border-subtle rounded-lg py-sm px-md text-label-md font-label-md text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary-fixed-dim min-w-[140px]">
+<option>All Categories</option>
+<option>Internships</option>
+<option>Scholarships</option>
+<option>Full-time Roles</option>
+</select>
+<select class="bg-surface-background border border-border-subtle rounded-lg py-sm px-md text-label-md font-label-md text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary-fixed-dim min-w-[120px]">
+<option>Eligibility</option>
+<option>Undergrad</option>
+<option>Graduate</option>
+<option>Professional</option>
+</select>
+<select class="bg-surface-background border border-border-subtle rounded-lg py-sm px-md text-label-md font-label-md text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary-fixed-dim min-w-[120px]">
+<option>Deadline</option>
+<option>Next 30 Days</option>
+<option>Next 90 Days</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Opportunity Grid -->
+<section class="px-margin-mobile md:px-xxl pb-xxl max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Card 1 -->
+<article class="bg-surface-container-lowest rounded-xl p-lg shadow-ambient border border-border-subtle flex flex-col h-full group hover:-translate-y-1 transition-transform duration-300">
+<div class="flex justify-between items-start mb-md">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded bg-surface-container-low flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">code</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Technova Systems</p>
+</div>
+</div>
+<!-- Match Score -->
+<div class="relative w-12 h-12 flex items-center justify-center rounded-full border-4 border-primary-fixed">
+<svg class="absolute inset-0 w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-primary stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-dasharray="92, 100" stroke-width="4"></path>
+</svg>
+<span class="text-label-sm font-label-md text-on-surface font-bold relative z-10">92</span>
+</div>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-surface mb-sm line-clamp-2">AI Research Internship</h3>
+<div class="flex flex-col gap-xs mb-lg flex-1">
+<div class="flex items-center gap-xs text-label-sm font-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 0;">calendar_today</span>
+<span>Deadline: Oct 15, 2024</span>
+</div>
+<div class="flex items-center gap-xs text-label-sm font-label-sm text-tertiary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>Official Source Verified</span>
+</div>
+<div class="flex items-center gap-xs text-label-sm font-label-sm text-outline mt-auto pt-sm">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 0;">history</span>
+<span>Last verified 2 hours ago</span>
+</div>
+</div>
+<button class="w-full bg-surface-background border border-primary text-primary rounded-lg py-sm font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-colors duration-200">
+                        View Details
+                    </button>
+</article>
+<!-- Card 2 -->
+<article class="bg-surface-container-lowest rounded-xl p-lg shadow-ambient border border-border-subtle flex flex-col h-full group hover:-translate-y-1 transition-transform duration-300">
+<div class="flex justify-between items-start mb-md">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded bg-surface-container-low flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary-container" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Global Finance Corp</p>
+</div>
+</div>
+<div class="relative w-12 h-12 flex items-center justify-center rounded-full border-4 border-primary-fixed">
+<svg class="absolute inset-0 w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-primary stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-dasharray="88, 100" stroke-width="4"></path>
+</svg>
+<span class="text-label-sm font-label-md text-on-surface font-bold relative z-10">88</span>
+</div>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-surface mb-sm line-clamp-2">Quantitative Analysis Fellowship</h3>
+<div class="flex flex-col gap-xs mb-lg flex-1">
+<div class="flex items-center gap-xs text-label-sm font-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 0;">calendar_today</span>
+<span>Deadline: Nov 01, 2024</span>
+</div>
+<div class="flex items-center gap-xs text-label-sm font-label-sm text-tertiary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>Official Source Verified</span>
+</div>
+<div class="flex items-center gap-xs text-label-sm font-label-sm text-outline mt-auto pt-sm">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 0;">history</span>
+<span>Last verified 5 hours ago</span>
+</div>
+</div>
+<button class="w-full bg-surface-background border border-primary text-primary rounded-lg py-sm font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-colors duration-200">
+                        View Details
+                    </button>
+</article>
+<!-- Card 3 -->
+<article class="bg-surface-container-lowest rounded-xl p-lg shadow-ambient border border-border-subtle flex flex-col h-full group hover:-translate-y-1 transition-transform duration-300">
+<div class="flex justify-between items-start mb-md">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded bg-surface-container-low flex items-center justify-center">
+<span class="material-symbols-outlined text-alert-amber" style="font-variation-settings: 'FILL' 1;">architecture</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Design Nexus</p>
+</div>
+</div>
+<div class="relative w-12 h-12 flex items-center justify-center rounded-full border-4 border-primary-fixed">
+<svg class="absolute inset-0 w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-primary stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-dasharray="75, 100" stroke-width="4"></path>
+</svg>
+<span class="text-label-sm font-label-md text-on-surface font-bold relative z-10">75</span>
+</div>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-surface mb-sm line-clamp-2">Product Design Junior Role</h3>
+<div class="flex flex-col gap-xs mb-lg flex-1">
+<div class="flex items-center gap-xs text-label-sm font-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 0;">calendar_today</span>
+<span>Deadline: Rolling</span>
+</div>
+<div class="flex items-center gap-xs text-label-sm font-label-sm text-tertiary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>Official Source Verified</span>
+</div>
+<div class="flex items-center gap-xs text-label-sm font-label-sm text-outline mt-auto pt-sm">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 0;">history</span>
+<span>Last verified 1 day ago</span>
+</div>
+</div>
+<button class="w-full bg-surface-background border border-primary text-primary rounded-lg py-sm font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-colors duration-200">
+                        View Details
+                    </button>
+</article>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full py-xl bg-surface-container border-t border-outline-variant mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-xxl max-w-container-max mx-auto gap-md">
+<div class="text-label-md font-label-md font-bold text-on-surface">Nexora</div>
+<div class="text-body-md font-body-md text-on-surface-variant text-center md:text-left">© 2024 Nexora AI. Your Future, Navigated.</div>
+<div class="flex gap-md text-label-sm font-label-sm text-on-surface-variant">
+<a class="hover:text-primary underline transition-all cursor-pointer" href="#">Privacy Policy</a>
+<a class="hover:text-primary underline transition-all cursor-pointer" href="#">Terms of Service</a>
+<a class="hover:text-primary underline transition-all cursor-pointer" href="#">Trust Center</a>
+<a class="hover:text-primary underline transition-all cursor-pointer" href="#">Support</a>
+</div>
+</div>
+</footer>
+</main>
+</body></html>

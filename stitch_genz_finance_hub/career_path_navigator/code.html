@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Compare Paths - NEXORA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#ffffff",
+                        "outline": "#737686",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#dbe1ff",
+                        "on-tertiary-fixed": "#002113",
+                        "on-surface-variant": "#434655",
+                        "background": "#f8f9ff",
+                        "surface-bright": "#f8f9ff",
+                        "secondary": "#565e74",
+                        "on-secondary-container": "#5c647a",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-surface": "#0b1c30",
+                        "on-primary-fixed": "#00174b",
+                        "outline-variant": "#c3c6d7",
+                        "on-secondary-fixed": "#131b2e",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "surface-container": "#e5eeff",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "inverse-surface": "#213145",
+                        "secondary-container": "#dae2fd",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#cbdbf5",
+                        "surface-container-low": "#eff4ff",
+                        "primary-container": "#2563eb",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-background": "#0b1c30",
+                        "inverse-primary": "#b4c5ff",
+                        "surface-container-high": "#dce9ff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-variant": "#d3e4fe",
+                        "tertiary-container": "#007d55",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "on-primary-container": "#eeefff",
+                        "secondary-fixed": "#dae2fd",
+                        "tertiary": "#006242",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#0053db",
+                        "surface": "#f8f9ff",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "primary": "#004ac6",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#bdffdb",
+                        
+                        "match-high": "#004ac6", 
+                        "match-medium": "#007d55",
+                        "match-low": "#565e74"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xxl": "64px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "xl": "40px",
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "container-max": "1200px",
+                        "margin-mobile": "16px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}]
+                    },
+                    "boxShadow": {
+                        'level-1': '0px 4px 20px rgba(15, 23, 42, 0.05)',
+                        'level-2': '0px 10px 32px rgba(15, 23, 42, 0.12)',
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Subtle fade-in animation for content */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        
+        /* Hide scrollbar for clean horizontal scroll */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col md:flex-row antialiased">
+<!-- Top Navigation (Mobile Only) -->
+<nav class="md:hidden sticky top-0 z-50 flex justify-between items-center w-full px-lg py-md max-w-container-max mx-auto bg-surface-container-lowest shadow-sm">
+<div class="font-display-lg text-[24px] font-extrabold tracking-tight text-primary">NEXORA</div>
+<button class="text-on-surface p-sm rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</nav>
+<!-- Side Navigation (Desktop) -->
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-surface-container-low p-md space-y-sm z-40 border-r border-outline-variant/30">
+<div class="mb-xl px-sm">
+<h1 class="font-display-lg text-headline-md text-primary font-extrabold tracking-tight">NEXORA</h1>
+<p class="font-label-sm text-label-sm text-secondary mt-xs uppercase tracking-wider">Premium Navigator</p>
+</div>
+<nav class="flex-1 space-y-xs">
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">explore</span>
+                Opportunities
+            </a>
+<a class="flex items-center gap-md px-md py-sm bg-primary-container text-on-primary-container rounded-lg font-semibold font-label-md text-label-md translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined filled">work</span>
+                Career Path
+            </a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+                Financials
+            </a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all font-label-md text-label-md mt-auto" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="mt-auto pt-xl">
+<button class="w-full bg-primary text-on-primary font-label-md text-label-md py-md rounded-lg hover:bg-on-primary-fixed-variant transition-colors shadow-level-1 flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                New Analysis
+            </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-64 p-margin-mobile md:p-xl w-full max-w-container-max mx-auto overflow-x-hidden">
+<!-- Header Section -->
+<header class="mb-xl animate-fade-in">
+<div class="flex items-center gap-sm text-secondary mb-md">
+<a class="font-label-sm text-label-sm hover:text-primary transition-colors flex items-center gap-xs" href="#">
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+                    Back to Canvas
+                </a>
+</div>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-sm">Path Comparison</h2>
+<!-- User Query Display -->
+<div class="bg-surface-container-lowest p-md rounded-lg border border-outline-variant/50 shadow-level-1 inline-flex items-start gap-md mt-sm">
+<div class="bg-primary-container/20 p-sm rounded-full text-primary mt-xs shrink-0">
+<span class="material-symbols-outlined">forum</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-wider mb-xs">Your Query</p>
+<p class="font-body-md text-body-md text-on-surface italic">"I am confused between RBI Grade B, UPSC, and MBA."</p>
+</div>
+</div>
+</header>
+<!-- Data Visualization Canvas (Bento/Grid Structure) -->
+<div class="space-y-xl">
+<!-- Nexora Fit Score Highlight -->
+<section class="animate-fade-in delay-100">
+<h3 class="font-label-md text-label-md text-secondary uppercase tracking-widest mb-md border-b border-outline-variant/30 pb-sm">Aparna's Strategic Fit</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<!-- MBA Score Card (Highest) -->
+<div class="bg-surface-container-lowest rounded-xl p-lg shadow-level-1 border-t-4 border-match-high relative overflow-hidden group hover:shadow-level-2 transition-shadow">
+<div class="absolute top-0 right-0 p-md opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[64px] text-match-high">school</span>
+</div>
+<div class="flex justify-between items-start mb-xl relative z-10">
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface">MBA</h4>
+<p class="font-label-sm text-label-sm text-secondary mt-xs">Corporate Leadership</p>
+</div>
+<div class="bg-match-high/10 text-match-high px-sm py-xs rounded font-label-md text-label-md flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+                                Top Match
+                            </div>
+</div>
+<div class="flex items-end gap-md relative z-10">
+<div class="font-display-lg text-display-lg text-match-high leading-none">92<span class="text-[24px]">%</span></div>
+<div class="pb-xs">
+<p class="font-label-sm text-label-sm text-secondary">Alignment Score</p>
+</div>
+</div>
+</div>
+<!-- RBI Score Card -->
+<div class="bg-surface-container-lowest rounded-xl p-lg shadow-level-1 border-t-4 border-match-medium relative overflow-hidden group hover:shadow-level-2 transition-shadow">
+<div class="absolute top-0 right-0 p-md opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[64px] text-match-medium">account_balance</span>
+</div>
+<div class="flex justify-between items-start mb-xl relative z-10">
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface">RBI Grade B</h4>
+<p class="font-label-sm text-label-sm text-secondary mt-xs">Central Banking</p>
+</div>
+</div>
+<div class="flex items-end gap-md relative z-10">
+<div class="font-display-lg text-display-lg text-match-medium leading-none">85<span class="text-[24px]">%</span></div>
+<div class="pb-xs">
+<p class="font-label-sm text-label-sm text-secondary">Alignment Score</p>
+</div>
+</div>
+</div>
+<!-- UPSC Score Card -->
+<div class="bg-surface-container-lowest rounded-xl p-lg shadow-level-1 border-t-4 border-match-low relative overflow-hidden group hover:shadow-level-2 transition-shadow">
+<div class="absolute top-0 right-0 p-md opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[64px] text-match-low">policy</span>
+</div>
+<div class="flex justify-between items-start mb-xl relative z-10">
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface">UPSC</h4>
+<p class="font-label-sm text-label-sm text-secondary mt-xs">Civil Services</p>
+</div>
+</div>
+<div class="flex items-end gap-md relative z-10">
+<div class="font-display-lg text-display-lg text-match-low leading-none">60<span class="text-[24px]">%</span></div>
+<div class="pb-xs">
+<p class="font-label-sm text-label-sm text-secondary">Alignment Score</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Detailed Comparison Grid -->
+<section class="animate-fade-in delay-200">
+<h3 class="font-label-md text-label-md text-secondary uppercase tracking-widest mb-md border-b border-outline-variant/30 pb-sm">Matrix Analysis</h3>
+<div class="bg-surface-container-lowest rounded-xl shadow-level-1 overflow-hidden border border-outline-variant/30">
+<div class="overflow-x-auto hide-scrollbar">
+<table class="w-full text-left min-w-[800px]">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant/50">
+<th class="p-lg font-label-md text-label-md text-secondary w-1/4">Parameter</th>
+<th class="p-lg font-headline-md text-[20px] text-on-surface w-1/4 border-l border-outline-variant/30">
+<div class="flex items-center gap-sm">
+                                            RBI Grade B
+                                        </div>
+</th>
+<th class="p-lg font-headline-md text-[20px] text-on-surface w-1/4 border-l border-outline-variant/30">
+<div class="flex items-center gap-sm">
+                                            UPSC
+                                        </div>
+</th>
+<th class="p-lg font-headline-md text-[20px] text-on-surface w-1/4 border-l border-outline-variant/30 bg-primary-container/10">
+<div class="flex items-center gap-sm text-primary">
+                                            MBA
+                                            <span class="material-symbols-outlined text-[16px] filled">star</span>
+</div>
+</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md divide-y divide-outline-variant/30">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="p-lg font-label-md text-label-md text-secondary">Eligibility</td>
+<td class="p-lg border-l border-outline-variant/30 text-on-surface">Graduation (60%)</td>
+<td class="p-lg border-l border-outline-variant/30 text-on-surface">Graduation</td>
+<td class="p-lg border-l border-outline-variant/30 text-on-surface bg-primary-container/5">Graduation (CAT/GMAT)</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="p-lg font-label-md text-label-md text-secondary">Prep Time</td>
+<td class="p-lg border-l border-outline-variant/30 text-on-surface">8 - 12 Months</td>
+<td class="p-lg border-l border-outline-variant/30 text-on-surface">18 - 24 Months</td>
+<td class="p-lg border-l border-outline-variant/30 text-on-surface bg-primary-container/5 font-medium text-match-high">6 - 8 Months</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="p-lg font-label-md text-label-md text-secondary">Required Skills</td>
+<td class="p-lg border-l border-outline-variant/30 text-on-surface">Econ, Finance, Quant</td>
+<td class="p-lg border-l border-outline-variant/30 text-on-surface">Broad GK, Writing, Endurance</td>
+<td class="p-lg border-l border-outline-variant/30 text-on-surface bg-primary-container/5">Aptitude, Comm., Leadership</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="p-lg font-label-md text-label-md text-secondary">Career Trajectory</td>
+<td class="p-lg border-l border-outline-variant/30 text-on-surface">Linear, Specialized</td>
+<td class="p-lg border-l border-outline-variant/30 text-on-surface">Linear, Administrative</td>
+<td class="p-lg border-l border-outline-variant/30 text-on-surface bg-primary-container/5">Dynamic, Cross-functional</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="p-lg font-label-md text-label-md text-secondary">Income (Est. Entry)</td>
+<td class="p-lg border-l border-outline-variant/30 text-on-surface">₹20L - ₹24L / yr</td>
+<td class="p-lg border-l border-outline-variant/30 text-on-surface">₹10L - ₹12L + Perks</td>
+<td class="p-lg border-l border-outline-variant/30 text-on-surface bg-primary-container/5 font-medium text-match-high">₹25L+ (Tier 1)</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="p-lg font-label-md text-label-md text-secondary">Stability</td>
+<td class="p-lg border-l border-outline-variant/30 text-on-surface font-medium text-match-high">Very High (Govt)</td>
+<td class="p-lg border-l border-outline-variant/30 text-on-surface font-medium text-match-high">Ultimate (Govt)</td>
+<td class="p-lg border-l border-outline-variant/30 text-on-surface bg-primary-container/5">Moderate (Market dependent)</td>
+</tr>
+<!-- Row 7 -->
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="p-lg font-label-md text-label-md text-secondary">Cost of Path</td>
+<td class="p-lg border-l border-outline-variant/30 text-on-surface">Low (Coaching fees)</td>
+<td class="p-lg border-l border-outline-variant/30 text-on-surface">Medium (Coaching/Living)</td>
+<td class="p-lg border-l border-outline-variant/30 text-on-surface bg-primary-container/5">High (₹20L - ₹30L Tuition)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- Recommended Next Experiment -->
+<section class="mt-xl">
+<div class="bg-surface-container-high rounded-xl p-lg border border-primary-container/30 flex flex-col md:flex-row items-center justify-between gap-lg">
+<div class="flex items-start gap-md">
+<div class="bg-primary text-on-primary p-sm rounded-full shrink-0">
+<span class="material-symbols-outlined">science</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-secondary uppercase tracking-wider mb-xs">Recommended Next Action</h4>
+<p class="font-headline-md text-[20px] text-on-surface mb-xs">Take a GMAT mock test to assess baseline.</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Validate your MBA aptitude before committing significant resources.</p>
+</div>
+</div>
+<button class="w-full md:w-auto shrink-0 bg-tertiary-container text-on-tertiary-container hover:bg-on-tertiary-fixed-variant transition-colors font-label-md text-label-md py-md px-xl rounded-lg shadow-level-1">
+                        Start Mock Test
+                    </button>
+</div>
+</section>
+</div>
+<!-- Footer Note -->
+<footer class="mt-xxl pt-lg border-t border-outline-variant/30 text-center pb-xl md:pb-0">
+<p class="font-label-sm text-label-sm text-outline flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">info</span>
+                AI-generated relevance estimate. Verify details on official sources.
+            </p>
+</footer>
+</main>
+<!-- Bottom Navigation (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface-container-lowest border-t border-outline-variant/30 z-50 px-sm pb-sm pt-xs flex justify-around items-center">
+<a class="flex flex-col items-center p-sm text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-[10px] mt-xs">Dashboard</span>
+</a>
+<a class="flex flex-col items-center p-sm text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-[10px] mt-xs">Explore</span>
+</a>
+<a class="flex flex-col items-center p-sm text-primary" href="#">
+<div class="bg-primary-container px-md py-xs rounded-full mb-xs">
+<span class="material-symbols-outlined filled">work</span>
+</div>
+<span class="font-label-sm text-[10px] font-bold">Paths</span>
+</a>
+<a class="flex flex-col items-center p-sm text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-sm text-[10px] mt-xs">Finance</span>
+</a>
+</nav>
+</body></html>

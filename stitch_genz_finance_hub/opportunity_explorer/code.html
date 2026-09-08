@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexora - Opportunity Explorer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#b4c5ff",
+                        "on-tertiary-container": "#bdffdb",
+                        "primary": "#004ac6",
+                        "on-primary-container": "#eeefff",
+                        "surface-bright": "#f8f9ff",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#dae2fd",
+                        "surface-container-low": "#eff4ff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "primary-container": "#2563eb",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "tertiary-container": "#007d55",
+                        "on-secondary-container": "#5c647a",
+                        "outline": "#737686",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface": "#f8f9ff",
+                        "on-secondary-fixed": "#131b2e",
+                        "on-primary": "#ffffff",
+                        "on-background": "#0b1c30",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "surface-dim": "#cbdbf5",
+                        "error": "#ba1a1a",
+                        "surface-container": "#e5eeff",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#dae2fd",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-primary-fixed": "#00174b",
+                        "surface-container-high": "#dce9ff",
+                        "on-tertiary": "#ffffff",
+                        "secondary": "#565e74",
+                        "on-tertiary-fixed": "#002113",
+                        "on-surface": "#0b1c30",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "outline-variant": "#c3c6d7",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-tint": "#0053db",
+                        "inverse-surface": "#213145",
+                        "background": "#f8f9ff",
+                        "tertiary": "#006242",
+                        "surface-variant": "#d3e4fe",
+                        "primary-fixed": "#dbe1ff",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#434655"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "40px",
+                        "xxl": "64px",
+                        "margin-mobile": "16px",
+                        "container-max": "1200px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "unit": "4px",
+                        "lg": "24px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #f8f9ff;
+            color: #0b1c30;
+        }
+        .ambient-shadow-sm { box-shadow: 0px 4px 20px rgba(15, 23, 42, 0.05); }
+        .ambient-shadow-md { box-shadow: 0px 10px 32px rgba(15, 23, 42, 0.12); }
+        .progress-ring__circle {
+            transition: stroke-dashoffset 0.35s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md flex h-screen overflow-hidden">
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex fixed left-0 top-0 h-screen w-64 flex-col p-md z-40 bg-surface-container-low dark:bg-inverse-surface border-r border-outline-variant">
+<div class="flex items-center gap-sm mb-xl">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">explore</span>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary">Nexora</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">AI Personal Navigator</p>
+</div>
+</div>
+<button class="w-full bg-primary-container text-on-primary-container font-label-md text-label-md py-sm px-md rounded-lg mb-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined">chat_bubble</span>
+            Ask Assistant
+        </button>
+<div class="flex-1 overflow-y-auto hide-scrollbar space-y-sm">
+<a class="text-on-surface-variant dark:text-on-secondary-fixed-variant flex items-center gap-md px-md py-sm hover:bg-surface-container-highest dark:hover:bg-on-secondary-fixed rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="text-on-surface-variant dark:text-on-secondary-fixed-variant flex items-center gap-md px-md py-sm hover:bg-surface-container-highest dark:hover:bg-on-secondary-fixed rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-md text-label-md">Navigator</span>
+</a>
+<a class="bg-primary-container text-on-primary-container dark:bg-primary dark:text-on-primary rounded-xl flex items-center gap-md px-md py-sm scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+<span class="font-label-md text-label-md">Opportunities</span>
+</a>
+<a class="text-on-surface-variant dark:text-on-secondary-fixed-variant flex items-center gap-md px-md py-sm hover:bg-surface-container-highest dark:hover:bg-on-secondary-fixed rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">work</span>
+<span class="font-label-md text-label-md">Career</span>
+</a>
+<a class="text-on-surface-variant dark:text-on-secondary-fixed-variant flex items-center gap-md px-md py-sm hover:bg-surface-container-highest dark:hover:bg-on-secondary-fixed rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">event_note</span>
+<span class="font-label-md text-label-md">Weekly Plan</span>
+</a>
+<a class="text-on-surface-variant dark:text-on-secondary-fixed-variant flex items-center gap-md px-md py-sm hover:bg-surface-container-highest dark:hover:bg-on-secondary-fixed rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-md text-label-md">Applications</span>
+</a>
+<a class="text-on-surface-variant dark:text-on-secondary-fixed-variant flex items-center gap-md px-md py-sm hover:bg-surface-container-highest dark:hover:bg-on-secondary-fixed rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-md text-label-md">Money</span>
+</a>
+<a class="text-on-surface-variant dark:text-on-secondary-fixed-variant flex items-center gap-md px-md py-sm hover:bg-surface-container-highest dark:hover:bg-on-secondary-fixed rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</div>
+<div class="mt-auto pt-md border-t border-outline-variant space-y-sm">
+<a class="text-on-surface-variant dark:text-on-secondary-fixed-variant flex items-center gap-md px-md py-sm hover:bg-surface-container-highest dark:hover:bg-on-secondary-fixed rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md text-label-md">Help</span>
+</a>
+<a class="text-on-surface-variant dark:text-on-secondary-fixed-variant flex items-center gap-md px-md py-sm hover:bg-surface-container-highest dark:hover:bg-on-secondary-fixed rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col h-screen md:ml-64 w-full bg-background overflow-hidden relative">
+<!-- TopAppBar (Mobile & Global Actions) -->
+<header class="sticky top-0 z-50 flex justify-between items-center w-full px-lg py-sm max-w-container-max mx-auto bg-surface-container-lowest dark:bg-on-background shadow-sm">
+<div class="flex items-center gap-md">
+<div class="md:hidden flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-headline-md text-headline-md font-extrabold text-primary dark:text-inverse-primary">Nexora</span>
+</div>
+</div>
+<div class="flex items-center gap-sm text-on-surface-variant">
+<button class="p-2 rounded-full hover:bg-surface-container dark:hover:bg-on-secondary-fixed-variant transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container dark:hover:bg-on-secondary-fixed-variant transition-colors hidden md:block">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<img alt="User profile" class="w-8 h-8 rounded-full ml-2 object-cover border border-outline-variant" data-alt="A small circular avatar placeholder image showing a generic user silhouette in a professional light mode setting, clean and modern." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcJTyg9J8nK-cteW1l5slYbrl1BjD2pPnlMOR68VXwMtvC52ajWP0PhnjhA8xqfT4rXMeswZtApRKoxkMOh4kvoQ_amb5j2AlJw27-fQoNMyfQj84178rzECOuZt7-j7mbsS9-w1LaAFZ6fR6cTS50U9hVkX5q9BLsawgt33AQu0eG-oHJnkSeZ3BPGuVlW7IZQtjBYZpfvBMqw-xZIHJtTL00N2MX_fKlYyLQLvOGqHy7dYKJK5OqMA"/>
+</div>
+</header>
+<!-- Scrollable Canvas -->
+<div class="flex-1 overflow-y-auto px-margin-mobile md:px-lg py-lg space-y-xl max-w-container-max mx-auto w-full relative">
+<!-- Search & Filters Header -->
+<section class="space-y-lg relative z-10">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background max-w-2xl">
+                    Discover your next big leap.
+                </h2>
+<div class="flex flex-col md:flex-row gap-md items-stretch md:items-center">
+<div class="relative flex-1 group">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full bg-surface-lowest border border-outline-variant rounded-xl py-3 pl-12 pr-4 font-body-md text-body-md text-on-background placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm" placeholder="What opportunity are you looking for?" type="text"/>
+</div>
+<button class="bg-primary text-on-primary font-label-md text-label-md py-3 px-xl rounded-xl hover:opacity-90 transition-opacity shadow-sm whitespace-nowrap">
+                        Search
+                    </button>
+</div>
+<!-- Filter Chips -->
+<div class="flex gap-sm overflow-x-auto hide-scrollbar py-1">
+<button class="flex items-center gap-xs px-4 py-2 rounded-full border border-outline-variant bg-surface-lowest text-on-surface-variant font-label-md text-label-md whitespace-nowrap hover:bg-surface-container transition-colors">
+                        Category <span class="material-symbols-outlined text-sm">keyboard_arrow_down</span>
+</button>
+<button class="flex items-center gap-xs px-4 py-2 rounded-full border border-outline-variant bg-surface-lowest text-on-surface-variant font-label-md text-label-md whitespace-nowrap hover:bg-surface-container transition-colors">
+                        Career <span class="material-symbols-outlined text-sm">keyboard_arrow_down</span>
+</button>
+<button class="flex items-center gap-xs px-4 py-2 rounded-full border border-outline-variant bg-surface-lowest text-on-surface-variant font-label-md text-label-md whitespace-nowrap hover:bg-surface-container transition-colors">
+                        Location <span class="material-symbols-outlined text-sm">keyboard_arrow_down</span>
+</button>
+<button class="flex items-center gap-xs px-4 py-2 rounded-full border border-primary bg-primary-container text-on-primary-container font-label-md text-label-md whitespace-nowrap">
+                        Match Score: 80%+ <span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+</section>
+<!-- Results Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg pb-xxl">
+<!-- Opportunity Card 1 -->
+<article class="bg-surface-container-lowest rounded-xl p-lg ambient-shadow-sm border border-outline-variant flex flex-col hover:ambient-shadow-md transition-shadow duration-300">
+<div class="flex justify-between items-start mb-md">
+<div class="flex gap-sm flex-wrap items-center">
+<span class="px-2 py-1 bg-surface-container text-on-surface-variant rounded-md font-label-sm text-label-sm uppercase tracking-wider">Internship</span>
+<span class="flex items-center gap-1 text-tertiary-container font-label-sm text-label-sm bg-tertiary-fixed-dim/20 px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[14px]">verified</span> Verified
+                            </span>
+</div>
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">bookmark_border</span>
+</button>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background mb-1">Product Management Intern</h3>
+<p class="font-body-md text-body-md text-secondary mb-md">FinTech Solutions Ltd.</p>
+<div class="flex flex-col gap-2 mt-auto pt-md border-t border-surface-container-highest">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md">
+<span class="material-symbols-outlined text-lg">calendar_today</span>
+                            Deadline: Oct 15, 2024
+                        </div>
+<div class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md">
+<span class="material-symbols-outlined text-lg">location_on</span>
+                            Remote (IST timezone)
+                        </div>
+</div>
+<div class="mt-md flex items-center justify-between bg-surface p-sm rounded-lg border border-surface-variant">
+<div class="flex items-center gap-md">
+<!-- Circular Progress -->
+<div class="relative w-12 h-12">
+<svg class="w-12 h-12" viewbox="0 0 36 36">
+<path class="text-surface-variant" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+<path class="text-primary progress-ring__circle" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="100, 100" stroke-dashoffset="5" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center font-label-md text-label-md text-primary font-bold">
+                                    95%
+                                </div>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-background">Nexora Match</p>
+<p class="font-label-sm text-label-sm text-secondary">Highly aligned</p>
+</div>
+</div>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg font-label-md text-label-md hover:bg-primary/90 transition-colors">
+                            Apply
+                        </button>
+</div>
+</article>
+<!-- Opportunity Card 2 -->
+<article class="bg-surface-container-lowest rounded-xl p-lg ambient-shadow-sm border border-outline-variant flex flex-col hover:ambient-shadow-md transition-shadow duration-300">
+<div class="flex justify-between items-start mb-md">
+<div class="flex gap-sm flex-wrap items-center">
+<span class="px-2 py-1 bg-surface-container text-on-surface-variant rounded-md font-label-sm text-label-sm uppercase tracking-wider">Scholarship</span>
+<span class="flex items-center gap-1 text-tertiary-container font-label-sm text-label-sm bg-tertiary-fixed-dim/20 px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[14px]">verified</span> Verified
+                            </span>
+</div>
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">bookmark_border</span>
+</button>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background mb-1">Global Tech Leaders Grant</h3>
+<p class="font-body-md text-body-md text-secondary mb-md">EduFund Foundation</p>
+<div class="flex flex-col gap-2 mt-auto pt-md border-t border-surface-container-highest">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md">
+<span class="material-symbols-outlined text-lg">calendar_today</span>
+                            Deadline: Nov 01, 2024
+                        </div>
+<div class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md">
+<span class="material-symbols-outlined text-lg">location_on</span>
+                            Global / Merit Based
+                        </div>
+</div>
+<div class="mt-md flex items-center justify-between bg-surface p-sm rounded-lg border border-surface-variant">
+<div class="flex items-center gap-md">
+<!-- Circular Progress -->
+<div class="relative w-12 h-12">
+<svg class="w-12 h-12" viewbox="0 0 36 36">
+<path class="text-surface-variant" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+<path class="text-primary progress-ring__circle" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="100, 100" stroke-dashoffset="12" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center font-label-md text-label-md text-primary font-bold">
+                                    88%
+                                </div>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-background">Nexora Match</p>
+<p class="font-label-sm text-label-sm text-secondary">Strong profile fit</p>
+</div>
+</div>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg font-label-md text-label-md hover:bg-primary/90 transition-colors">
+                            Apply
+                        </button>
+</div>
+</article>
+<!-- Opportunity Card 3 -->
+<article class="bg-surface-container-lowest rounded-xl p-lg ambient-shadow-sm border border-outline-variant flex flex-col hover:ambient-shadow-md transition-shadow duration-300">
+<div class="flex justify-between items-start mb-md">
+<div class="flex gap-sm flex-wrap items-center">
+<span class="px-2 py-1 bg-surface-container text-on-surface-variant rounded-md font-label-sm text-label-sm uppercase tracking-wider">Hackathon</span>
+</div>
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+</button>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background mb-1">AI for Good Challenge</h3>
+<p class="font-body-md text-body-md text-secondary mb-md">OpenAI &amp; UN</p>
+<div class="flex flex-col gap-2 mt-auto pt-md border-t border-surface-container-highest">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md">
+<span class="material-symbols-outlined text-lg">calendar_today</span>
+                            Nov 10 - Nov 12, 2024
+                        </div>
+<div class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md">
+<span class="material-symbols-outlined text-lg">location_on</span>
+                            Hybrid (Bangalore / Remote)
+                        </div>
+</div>
+<div class="mt-md flex items-center justify-between bg-surface p-sm rounded-lg border border-surface-variant">
+<div class="flex items-center gap-md">
+<!-- Circular Progress -->
+<div class="relative w-12 h-12">
+<svg class="w-12 h-12" viewbox="0 0 36 36">
+<path class="text-surface-variant" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+<path class="text-primary progress-ring__circle" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="100, 100" stroke-dashoffset="18" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center font-label-md text-label-md text-primary font-bold">
+                                    82%
+                                </div>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-background">Nexora Match</p>
+<p class="font-label-sm text-label-sm text-secondary">Good skills overlap</p>
+</div>
+</div>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg font-label-md text-label-md hover:bg-primary/90 transition-colors">
+                            Details
+                        </button>
+</div>
+</article>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface-container-lowest dark:bg-on-background shadow-[0_-4px_20px_rgba(15,23,42,0.05)] z-50 px-sm py-2 pb-safe">
+<ul class="flex justify-around items-center">
+<li>
+<a class="flex flex-col items-center p-2 text-on-secondary-container dark:text-on-secondary-fixed-variant" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-[10px] mt-1">Home</span>
+</a>
+</li>
+<li>
+<a class="flex flex-col items-center p-2 text-on-secondary-container dark:text-on-secondary-fixed-variant" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-[10px] mt-1">Navigator</span>
+</a>
+</li>
+<li>
+<a class="flex flex-col items-center p-2 text-primary dark:text-inverse-primary font-bold border-t-2 border-primary -mt-2 pt-4" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+<span class="font-label-sm text-[10px] mt-1">Opportunities</span>
+</a>
+</li>
+<li>
+<a class="flex flex-col items-center p-2 text-on-secondary-container dark:text-on-secondary-fixed-variant" href="#">
+<span class="material-symbols-outlined">work</span>
+<span class="font-label-sm text-[10px] mt-1">Career</span>
+</a>
+</li>
+<li>
+<a class="flex flex-col items-center p-2 text-on-secondary-container dark:text-on-secondary-fixed-variant" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-[10px] mt-1">Profile</span>
+</a>
+</li>
+</ul>
+</nav>
+</body></html>

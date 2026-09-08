@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexora Main Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-primary": "#b4c5ff",
+                      "on-tertiary-container": "#bdffdb",
+                      "primary": "#004ac6",
+                      "on-primary-container": "#eeefff",
+                      "surface-bright": "#f8f9ff",
+                      "on-error-container": "#93000a",
+                      "on-error": "#ffffff",
+                      "secondary-fixed": "#dae2fd",
+                      "surface-container-low": "#eff4ff",
+                      "inverse-on-surface": "#eaf1ff",
+                      "primary-container": "#2563eb",
+                      "tertiary-fixed-dim": "#4edea3",
+                      "tertiary-container": "#007d55",
+                      "on-secondary-container": "#5c647a",
+                      "outline": "#737686",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "surface": "#f8f9ff",
+                      "on-secondary-fixed": "#131b2e",
+                      "on-primary": "#ffffff",
+                      "on-background": "#0b1c30",
+                      "on-secondary-fixed-variant": "#3f465c",
+                      "surface-dim": "#cbdbf5",
+                      "error": "#ba1a1a",
+                      "surface-container": "#e5eeff",
+                      "error-container": "#ffdad6",
+                      "secondary-container": "#dae2fd",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-primary-fixed": "#00174b",
+                      "surface-container-high": "#dce9ff",
+                      "on-tertiary": "#ffffff",
+                      "secondary": "#565e74",
+                      "on-tertiary-fixed": "#002113",
+                      "on-surface": "#0b1c30",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed": "#6ffbbe",
+                      "on-tertiary-fixed-variant": "#005236",
+                      "outline-variant": "#c3c6d7",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "surface-tint": "#0053db",
+                      "inverse-surface": "#213145",
+                      "background": "#f8f9ff",
+                      "tertiary": "#006242",
+                      "surface-variant": "#d3e4fe",
+                      "primary-fixed": "#dbe1ff",
+                      "secondary-fixed-dim": "#bec6e0",
+                      "on-secondary": "#ffffff",
+                      "on-surface-variant": "#434655"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xl": "40px",
+                      "xxl": "64px",
+                      "margin-mobile": "16px",
+                      "container-max": "1200px",
+                      "xs": "4px",
+                      "sm": "8px",
+                      "md": "16px",
+                      "unit": "4px",
+                      "lg": "24px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "body-md": ["Inter"],
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "body-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "display-lg": ["Plus Jakarta Sans"],
+                      "headline-lg-mobile": ["Plus Jakarta Sans"],
+                      "headline-md": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .card-shadow {
+            box-shadow: 0px 4px 20px rgba(15, 23, 42, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-surface-bright text-on-surface font-body-md min-h-screen flex">
+<!-- SideNavBar (Hidden on Mobile) -->
+<nav class="hidden md:flex flex-col fixed left-0 top-0 h-screen w-64 p-md z-40 bg-surface-container-low border-r border-outline-variant">
+<div class="flex items-center gap-sm mb-xl px-sm">
+<span class="material-symbols-outlined text-primary text-3xl" data-weight="fill">explore</span>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Nexora</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">AI Personal Navigator</p>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-sm">
+<a class="bg-primary-container text-on-primary-container rounded-xl flex items-center gap-md px-md py-sm font-label-md text-label-md transition-transform duration-200 scale-95 opacity-80" href="#">
+<span class="material-symbols-outlined" data-weight="fill">home</span> Home
+            </a>
+<a class="text-on-surface-variant flex items-center gap-md px-md py-sm hover:bg-surface-container-highest rounded-xl font-label-md text-label-md transition-transform duration-200 hover:scale-[1.02]" href="#">
+<span class="material-symbols-outlined">explore</span> Navigator
+            </a>
+<a class="text-on-surface-variant flex items-center gap-md px-md py-sm hover:bg-surface-container-highest rounded-xl font-label-md text-label-md transition-transform duration-200 hover:scale-[1.02]" href="#">
+<span class="material-symbols-outlined">rocket_launch</span> Opportunities
+            </a>
+<a class="text-on-surface-variant flex items-center gap-md px-md py-sm hover:bg-surface-container-highest rounded-xl font-label-md text-label-md transition-transform duration-200 hover:scale-[1.02]" href="#">
+<span class="material-symbols-outlined">work</span> Career
+            </a>
+<a class="text-on-surface-variant flex items-center gap-md px-md py-sm hover:bg-surface-container-highest rounded-xl font-label-md text-label-md transition-transform duration-200 hover:scale-[1.02]" href="#">
+<span class="material-symbols-outlined">event_note</span> Weekly Plan
+            </a>
+<a class="text-on-surface-variant flex items-center gap-md px-md py-sm hover:bg-surface-container-highest rounded-xl font-label-md text-label-md transition-transform duration-200 hover:scale-[1.02]" href="#">
+<span class="material-symbols-outlined">description</span> Applications
+            </a>
+<a class="text-on-surface-variant flex items-center gap-md px-md py-sm hover:bg-surface-container-highest rounded-xl font-label-md text-label-md transition-transform duration-200 hover:scale-[1.02]" href="#">
+<span class="material-symbols-outlined">payments</span> Money
+            </a>
+<a class="text-on-surface-variant flex items-center gap-md px-md py-sm hover:bg-surface-container-highest rounded-xl font-label-md text-label-md transition-transform duration-200 hover:scale-[1.02]" href="#">
+<span class="material-symbols-outlined">person</span> Profile
+            </a>
+</div>
+<button class="bg-primary text-on-primary font-label-md text-label-md py-sm px-md rounded-lg flex items-center justify-center gap-sm mt-auto mb-md hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined">smart_toy</span> Ask Assistant
+        </button>
+<div class="border-t border-outline-variant pt-sm flex flex-col gap-sm">
+<a class="text-on-surface-variant flex items-center gap-md px-md py-sm hover:bg-surface-container-highest rounded-xl font-label-md text-label-md transition-transform duration-200 hover:scale-[1.02]" href="#">
+<span class="material-symbols-outlined">help</span> Help
+            </a>
+<a class="text-on-surface-variant flex items-center gap-md px-md py-sm hover:bg-surface-container-highest rounded-xl font-label-md text-label-md transition-transform duration-200 hover:scale-[1.02]" href="#">
+<span class="material-symbols-outlined">logout</span> Logout
+            </a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 w-full max-w-container-max mx-auto p-margin-mobile md:p-gutter flex flex-col gap-xl">
+<!-- Mobile TopAppBar -->
+<header class="md:hidden sticky top-0 z-50 flex justify-between items-center w-full bg-surface-container-lowest shadow-sm px-margin-mobile py-sm mb-lg -mx-margin-mobile w-[calc(100%+32px)]">
+<h1 class="font-headline-md text-headline-md font-extrabold text-primary">Nexora</h1>
+<div class="flex items-center gap-sm">
+<button class="text-on-secondary-container hover:bg-surface-container p-sm rounded-full transition-colors"><span class="material-symbols-outlined">notifications</span></button>
+<button class="text-on-secondary-container hover:bg-surface-container p-sm rounded-full transition-colors"><span class="material-symbols-outlined">settings</span></button>
+<img alt="User profile" class="w-8 h-8 rounded-full object-cover ml-xs" data-alt="A clean, professional headshot of a young Indian woman, Aparna, smiling confidently. Bright natural lighting, modern minimalist background, perfect for a high-end corporate or academic profile picture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdEKnVt3QzmvabDVYu8TqF0BDSg0SmI9LwhX_qnaVZ3sBcdBodqvb-_WT6ZhB1l0Q4I8M_Ea01jfrXyvOwHNneXPLr1Im3X3AsAzGtWdal9UYHSbsEmaa6M1E2Tt1x3hCvfYlgijc0he0IaEp46xE01atmiByE0y0HRtigwb_4xHJu3wdiXfcQRi7NLS2augdYGhQdtRy7jPnB_eZx5PwUa7PDb6z4EX1VCIV4YQSf6-i7QphY94rt3w"/>
+</div>
+</header>
+<!-- Desktop Header / Hero -->
+<div class="flex justify-between items-start pt-sm md:pt-lg">
+<div>
+<h2 class="font-display-lg text-display-lg text-on-surface mb-xs tracking-tight hidden md:block">Good morning, Aparna.</h2>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-xs tracking-tight md:hidden">Good morning, Aparna.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Here is what matters most right now.</p>
+</div>
+<div class="hidden md:flex items-center gap-sm bg-surface-container-lowest p-xs rounded-full shadow-sm">
+<button class="text-on-secondary-container hover:bg-surface-container p-sm rounded-full transition-colors"><span class="material-symbols-outlined">notifications</span></button>
+<img alt="User profile" class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="A clean, professional headshot of a young Indian woman, Aparna, smiling confidently. Bright natural lighting, modern minimalist background, perfect for a high-end corporate or academic profile picture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDML0KedweKFqA-W9dD3UUkIXyaO-1O_IGkWfeAuMG5D8XCVMdaWkDiuNca7P9XGNG37Hgz1yrhGGRTvEjC3V4rxoS3U-VoTCrfbETRoutgybfA7Fo2vnZfxq6VgpFrrPPYTFQdW8LgLNHhKfPdnX-9YWTaLYAnARpcdorSnxiPqNzGB4dMjZw3RcYYQ04P6PWMDVUDkZuIX9N38D8G_Vt4EpPWfyGuqyK_2qkl5SLfIhdqoRWGvot9cA"/>
+</div>
+</div>
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Main Column (Left/Top) -->
+<div class="lg:col-span-8 flex flex-col gap-lg">
+<!-- Next Best Action Card -->
+<div class="bg-surface-container-lowest rounded-xl p-lg card-shadow border border-outline-variant relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full pointer-events-none"></div>
+<div class="flex justify-between items-start mb-md">
+<div>
+<span class="inline-flex items-center gap-xs bg-primary-container/20 text-primary-container px-sm py-xs rounded-full font-label-sm text-label-sm mb-sm">
+<span class="material-symbols-outlined text-[16px]">stars</span> Next Best Action
+                            </span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Apply for Policy Research Internship</h3>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">event</span> Deadline: 28 August
+                            </p>
+</div>
+<div class="flex flex-col items-center justify-center w-16 h-16 rounded-full border-4 border-primary text-primary font-headline-md text-headline-md">
+                            94<span class="text-sm">%</span>
+</div>
+</div>
+<div class="bg-surface-bright rounded-lg p-md mb-md border border-outline-variant/50">
+<p class="font-body-md text-body-md text-on-surface-variant flex items-start gap-sm">
+<span class="material-symbols-outlined text-tertiary-container mt-xs">psychology</span>
+<span><strong>AI Reasoning:</strong> This opportunity aligns strongly with your policy-career goal and utilizes your demonstrated skills in data analysis and technical writing.</span>
+</p>
+</div>
+<div class="flex gap-md">
+<button class="flex-1 bg-tertiary-container text-on-tertiary font-label-md text-label-md py-sm px-md rounded-lg hover:opacity-90 transition-opacity">
+                            Apply Now
+                        </button>
+<button class="flex-1 border border-primary text-primary font-label-md text-label-md py-sm px-md rounded-lg hover:bg-primary/5 transition-colors">
+                            Review Details
+                        </button>
+</div>
+</div>
+<!-- Bento Row 1 -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<!-- Top Priorities -->
+<div class="bg-surface-container-lowest rounded-xl p-lg card-shadow border border-outline-variant">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-md">Top Priorities</h3>
+<ul class="flex flex-col">
+<li class="flex items-center justify-between py-sm border-b border-outline-variant/30 last:border-0">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-error">warning</span>
+<span class="font-body-md text-body-md text-on-surface">Submit Draft Essay</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</li>
+<li class="flex items-center justify-between py-sm border-b border-outline-variant/30 last:border-0">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-tertiary-container">schedule</span>
+<span class="font-body-md text-body-md text-on-surface">Schedule Mentor Call</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</li>
+<li class="flex items-center justify-between py-sm border-b border-outline-variant/30 last:border-0">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface line-through text-on-surface-variant">Update Resume</span>
+</div>
+</li>
+</ul>
+</div>
+<!-- Upcoming Deadlines -->
+<div class="bg-surface-container-lowest rounded-xl p-lg card-shadow border border-outline-variant">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-md">Upcoming Deadlines</h3>
+<div class="space-y-sm">
+<div class="bg-surface-bright p-sm rounded-lg border border-outline-variant/50 flex justify-between items-center">
+<div>
+<p class="font-label-md text-label-md text-on-surface">Global Scholars Fund</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Scholarship</p>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-error">3 Days</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">12 Aug</p>
+</div>
+</div>
+<div class="bg-surface-bright p-sm rounded-lg border border-outline-variant/50 flex justify-between items-center">
+<div>
+<p class="font-label-md text-label-md text-on-surface">UN Youth Program</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Internship</p>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-on-surface">14 Days</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">23 Aug</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Column (Right/Bottom) -->
+<div class="lg:col-span-4 flex flex-col gap-lg">
+<!-- Career Progress (Radar Chart Placeholder) -->
+<div class="bg-surface-container-lowest rounded-xl p-lg card-shadow border border-outline-variant flex flex-col items-center">
+<h3 class="font-headline-md text-headline-md text-on-surface w-full mb-md">Career Readiness</h3>
+<div class="relative w-48 h-48 mb-md">
+<div class="absolute inset-0 border border-outline-variant rounded-full opacity-20"></div>
+<div class="absolute inset-4 border border-outline-variant rounded-full opacity-40"></div>
+<div class="absolute inset-8 border border-outline-variant rounded-full opacity-60"></div>
+<svg class="w-full h-full text-primary fill-current opacity-20" viewbox="0 0 100 100">
+<polygon points="50,10 80,30 90,70 50,90 20,60 30,20"></polygon>
+</svg>
+<svg class="absolute inset-0 w-full h-full text-primary stroke-current stroke-1 fill-none" viewbox="0 0 100 100">
+<polygon points="50,10 80,30 90,70 50,90 20,60 30,20"></polygon>
+</svg>
+</div>
+<div class="w-full grid grid-cols-2 gap-xs text-center font-label-sm text-label-sm text-on-surface-variant">
+<span>Policy Knowledge</span>
+<span>Data Analysis</span>
+<span>Communication</span>
+<span>Leadership</span>
+</div>
+</div>
+<!-- Nexora Money Widget -->
+<div class="bg-surface-container-lowest rounded-xl p-lg card-shadow border border-outline-variant">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-primary text-2xl">account_balance_wallet</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Nexora Money</h3>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-xs">Higher Education Goal</p>
+<div class="flex items-end gap-sm mb-sm">
+<span class="font-headline-lg text-headline-lg text-on-surface">₹38,000</span>
+<span class="font-body-md text-body-md text-on-surface-variant mb-1">/ ₹1,50,000</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-2 mb-md overflow-hidden">
+<div class="bg-primary h-2 rounded-full" style="width: 25%"></div>
+</div>
+<button class="w-full border border-primary text-primary font-label-md text-label-md py-sm px-md rounded-lg hover:bg-primary/5 transition-colors">
+                        Add Funds
+                    </button>
+</div>
+<!-- This Week Progress -->
+<div class="bg-surface-container-lowest rounded-xl p-lg card-shadow border border-outline-variant">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-md">This Week</h3>
+<div class="flex justify-between items-center px-sm">
+<div class="flex flex-col items-center gap-xs">
+<div class="w-8 h-8 rounded-full bg-tertiary-container text-on-tertiary flex items-center justify-center font-label-sm">M</div>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<div class="w-8 h-8 rounded-full bg-tertiary-container text-on-tertiary flex items-center justify-center font-label-sm">T</div>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-sm ring-2 ring-primary ring-offset-2">W</div>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<div class="w-8 h-8 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-label-sm">T</div>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<div class="w-8 h-8 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-label-sm">F</div>
+</div>
+</div>
+<p class="text-center font-label-sm text-label-sm text-on-surface-variant mt-md">2 of 5 daily goals met</p>
+</div>
+</div>
+</div>
+</main>
+</body></html>

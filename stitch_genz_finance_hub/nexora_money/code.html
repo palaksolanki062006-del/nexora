@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexora Money</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#b4c5ff",
+                        "on-tertiary-container": "#bdffdb",
+                        "primary": "#004ac6",
+                        "on-primary-container": "#eeefff",
+                        "surface-bright": "#f8f9ff",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#dae2fd",
+                        "surface-container-low": "#eff4ff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "primary-container": "#2563eb",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "tertiary-container": "#007d55",
+                        "on-secondary-container": "#5c647a",
+                        "outline": "#737686",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface": "#f8f9ff",
+                        "on-secondary-fixed": "#131b2e",
+                        "on-primary": "#ffffff",
+                        "on-background": "#0b1c30",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "surface-dim": "#cbdbf5",
+                        "error": "#ba1a1a",
+                        "surface-container": "#e5eeff",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#dae2fd",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-primary-fixed": "#00174b",
+                        "surface-container-high": "#dce9ff",
+                        "on-tertiary": "#ffffff",
+                        "secondary": "#565e74",
+                        "on-tertiary-fixed": "#002113",
+                        "on-surface": "#0b1c30",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "outline-variant": "#c3c6d7",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-tint": "#0053db",
+                        "inverse-surface": "#213145",
+                        "background": "#f8f9ff",
+                        "tertiary": "#006242",
+                        "surface-variant": "#d3e4fe",
+                        "primary-fixed": "#dbe1ff",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#434655"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "40px",
+                        "xxl": "64px",
+                        "margin-mobile": "16px",
+                        "container-max": "1200px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "unit": "4px",
+                        "lg": "24px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #f8f9ff; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .icon-filled { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        
+        /* Custom Ambient Shadows */
+        .shadow-ambient-1 { box-shadow: 0px 4px 20px rgba(15, 23, 42, 0.05); }
+    </style>
+</head>
+<body class="text-on-surface antialiased flex bg-background">
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex flex-col bg-surface-container-low border-r border-outline-variant fixed left-0 top-0 h-screen w-64 p-md z-40">
+<div class="mb-xl px-sm pt-sm">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Nexora</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-xs">AI Personal Navigator</p>
+</div>
+<div class="flex-1 space-y-sm">
+<a class="text-on-surface-variant flex items-center gap-md px-md py-sm hover:bg-surface-container-highest rounded-xl hover:scale-[1.02] transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-md px-md py-sm hover:bg-surface-container-highest rounded-xl hover:scale-[1.02] transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-md text-label-md">Navigator</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-md px-md py-sm hover:bg-surface-container-highest rounded-xl hover:scale-[1.02] transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">rocket_launch</span>
+<span class="font-label-md text-label-md">Opportunities</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-md px-md py-sm hover:bg-surface-container-highest rounded-xl hover:scale-[1.02] transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">work</span>
+<span class="font-label-md text-label-md">Career</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-md px-md py-sm hover:bg-surface-container-highest rounded-xl hover:scale-[1.02] transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">event_note</span>
+<span class="font-label-md text-label-md">Weekly Plan</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-md px-md py-sm hover:bg-surface-container-highest rounded-xl hover:scale-[1.02] transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-md text-label-md">Applications</span>
+</a>
+<!-- ACTIVE TAB -->
+<a class="bg-primary-container text-on-primary-container rounded-xl flex items-center gap-md px-md py-sm opacity-80 scale-95 transition-all duration-200" href="#">
+<span class="material-symbols-outlined icon-filled">payments</span>
+<span class="font-label-md text-label-md">Money</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-md px-md py-sm hover:bg-surface-container-highest rounded-xl hover:scale-[1.02] transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</div>
+<button class="mt-xl w-full bg-primary text-on-primary font-label-md text-label-md py-sm rounded-lg shadow-sm hover:opacity-90 transition-opacity">
+            Ask Assistant
+        </button>
+<div class="mt-lg pt-lg border-t border-outline-variant space-y-sm">
+<a class="text-on-surface-variant flex items-center gap-md px-md py-sm hover:bg-surface-container-highest rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md text-label-md">Help</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-md px-md py-sm hover:bg-surface-container-highest rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col md:ml-64 min-h-screen">
+<!-- TopAppBar (Mobile & Contextual Header) -->
+<header class="sticky top-0 z-50 flex justify-between items-center w-full px-lg py-sm bg-surface-container-lowest shadow-sm">
+<div class="flex items-center gap-sm md:hidden">
+<h1 class="font-display-lg text-headline-md font-extrabold text-primary">Nexora</h1>
+</div>
+<!-- Empty div for centering on desktop if needed, or keeping it right-aligned -->
+<div class="hidden md:block"></div>
+<div class="flex items-center gap-md">
+<button class="text-on-surface hover:bg-surface-container p-sm rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface hover:bg-surface-container p-sm rounded-full transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<img alt="User profile" class="w-10 h-10 rounded-full border border-outline-variant object-cover" data-alt="A highly detailed portrait of a professional Indian student in modern casual attire, smiling confidently. Soft, bright studio lighting, minimalist background, evoking trust and ambition." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvacaaSliLb0Pw0WjariSNQz9kaOpv-XMLgvC-P5KJUJCTAR91ftAJnLt1wNHHTePwFduBfsWT-TKXbCQFscaPI5CITzBpXk4L6A1Wtp6ZvlrtYJYBW_tNK9-CFtL6Z_KghXk0QwCzqq5jPqoQjcUONAeUuZZVukyzouGitmQTqfIvvoEJa6JmxR-DbtuJVuBus6ASIKvC7CLi1VTfawIgY5cCxWE1f5MZTl-gFPyQKnwh8AnU00Qs2A"/>
+</div>
+</header>
+<!-- Page Canvas -->
+<main class="flex-1 p-margin-mobile md:p-lg lg:p-xl max-w-container-max mx-auto w-full">
+<!-- Hero Header -->
+<div class="mb-xl max-w-3xl">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-sm">
+                    Build better financial habits before building wealth.
+                </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                    Your personalized dashboard for tracking goals, understanding cash flow, and learning the fundamentals of smart investing.
+                </p>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg">
+<!-- Savings Goal Tracker (Col 1-7) -->
+<div class="md:col-span-7 bg-surface-container-lowest rounded-xl p-lg shadow-ambient-1 border border-outline-variant flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-md">
+<h3 class="font-headline-md text-headline-md text-on-surface">Savings Goal</h3>
+<span class="bg-primary-container text-primary font-label-sm px-2 py-1 rounded-full flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">school</span> Higher Education
+                            </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-xl">Consistent saving builds the foundation for your academic ambitions.</p>
+</div>
+<div class="mt-auto">
+<div class="flex justify-between items-end mb-sm">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase tracking-wider mb-xs">Current</span>
+<span class="font-headline-lg text-headline-lg text-primary">₹45,000</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase tracking-wider mb-xs">Target</span>
+<span class="font-body-lg text-body-lg text-on-surface font-semibold">₹1,50,000</span>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="w-full bg-surface-variant rounded-full h-3 mb-xs overflow-hidden">
+<div class="bg-primary h-3 rounded-full" style="width: 30%"></div>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant text-right">30% Achieved</p>
+</div>
+</div>
+<!-- Monthly Budget Overview (Col 8-12) -->
+<div class="md:col-span-5 bg-surface-container-lowest rounded-xl p-lg shadow-ambient-1 border border-outline-variant flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xl">Monthly Budget</h3>
+<div class="flex-1 flex flex-col justify-center space-y-md">
+<!-- Income Row -->
+<div>
+<div class="flex justify-between items-center mb-xs">
+<span class="font-label-md text-label-md text-on-surface flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span> Inflow (Stipend/Allowance)
+                                </span>
+<span class="font-body-md text-body-md font-semibold text-on-surface">₹12,000</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-1.5">
+<div class="bg-tertiary h-1.5 rounded-full" style="width: 100%"></div>
+</div>
+</div>
+<!-- Expenses Row -->
+<div>
+<div class="flex justify-between items-center mb-xs">
+<span class="font-label-md text-label-md text-on-surface flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-error"></span> Outflow (Essentials + Lifestyle)
+                                </span>
+<span class="font-body-md text-body-md font-semibold text-on-surface">₹8,500</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-1.5">
+<div class="bg-error h-1.5 rounded-full" style="width: 70%"></div>
+</div>
+</div>
+</div>
+<div class="mt-xl pt-md border-t border-outline-variant flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface-variant">Remaining Capacity</span>
+<span class="font-headline-md text-headline-md text-tertiary">₹3,500</span>
+</div>
+</div>
+<!-- Projections (Col 1-12) -->
+<div class="md:col-span-12 bg-surface-container-lowest rounded-xl p-lg shadow-ambient-1 border border-outline-variant">
+<div class="flex justify-between items-start mb-xl">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Estimated Growth Projections</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs">Illustrative scenario based on ₹3,500 monthly investment.</p>
+</div>
+<span class="bg-surface-variant text-on-surface-variant font-label-sm px-2 py-1 rounded">Educational Purpose Only</span>
+</div>
+<!-- Simple CSS Graph Representation -->
+<div class="h-48 flex items-end gap-sm md:gap-lg mt-md">
+<div class="flex-1 flex flex-col justify-end group">
+<span class="text-center font-label-sm text-on-surface-variant mb-xs opacity-0 group-hover:opacity-100 transition-opacity">₹42k</span>
+<div class="w-full bg-primary-fixed h-[20%] rounded-t-md relative transition-all duration-300 hover:bg-primary-container"></div>
+<span class="text-center font-label-sm text-on-surface mt-xs">Year 1</span>
+</div>
+<div class="flex-1 flex flex-col justify-end group">
+<span class="text-center font-label-sm text-on-surface-variant mb-xs opacity-0 group-hover:opacity-100 transition-opacity">₹90k</span>
+<div class="w-full bg-primary-fixed h-[40%] rounded-t-md relative transition-all duration-300 hover:bg-primary-container"></div>
+<span class="text-center font-label-sm text-on-surface mt-xs">Year 2</span>
+</div>
+<div class="flex-1 flex flex-col justify-end group">
+<span class="text-center font-label-sm text-on-surface-variant mb-xs opacity-0 group-hover:opacity-100 transition-opacity">₹145k</span>
+<div class="w-full bg-primary-fixed h-[65%] rounded-t-md relative transition-all duration-300 hover:bg-primary-container"></div>
+<span class="text-center font-label-sm text-on-surface mt-xs">Year 3</span>
+</div>
+<div class="flex-1 flex flex-col justify-end group">
+<span class="text-center font-label-sm text-on-surface-variant mb-xs opacity-0 group-hover:opacity-100 transition-opacity">₹210k</span>
+<div class="w-full bg-primary h-[90%] rounded-t-md relative shadow-sm transition-all duration-300"></div>
+<span class="text-center font-label-sm text-primary font-bold mt-xs">Year 4</span>
+</div>
+</div>
+</div>
+<!-- Education Modules Header -->
+<div class="md:col-span-12 mt-md">
+<h3 class="font-headline-md text-headline-md text-on-surface">Financial Intelligence</h3>
+</div>
+<!-- SIP Basics Module -->
+<div class="md:col-span-6 flex bg-surface-container-lowest rounded-xl shadow-ambient-1 border border-outline-variant overflow-hidden hover:shadow-md transition-shadow cursor-pointer">
+<div class="w-1/3 bg-surface-variant">
+<div class="bg-cover bg-center w-full h-full min-h-[120px]" data-alt="A minimalist, conceptual 3D illustration representing a Systematic Investment Plan (SIP). Neatly stacked, semi-transparent glass coins building a staircase upward. Bright, clean light mode aesthetic, corporate blue and slate tones." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCOYo416hHlUUV_cW8wz7es9DZaes7PBfO8nGZbosgQ1b7ISCU5JfNrh29kZfTWHmFMhL0LmDim4JHEOo6bWT8ej3R04Zat_jmpbkeulrM99Rvj-yTX13zx0SCYYBs85tejudAjvP_v4gLpavj9B0kxL3tKdUetQl6dsX1_LDOTFmv5PQJMp1PSgfr9Vr4CAV_DVgIHyoiZEobj6SB7MrETcwx5QGE96UQXk17u6sCHh0NVyePJ32y9Tw')"></div>
+</div>
+<div class="w-2/3 p-md flex flex-col justify-center">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wide mb-xs">Module 1</span>
+<h4 class="font-headline-sm text-body-lg font-bold text-on-surface mb-xs">SIP Basics</h4>
+<p class="font-body-sm text-label-md text-on-surface-variant font-normal line-clamp-2">Understand how consistent, small investments can mitigate market volatility over time.</p>
+</div>
+</div>
+<!-- Compound Interest Module -->
+<div class="md:col-span-6 flex bg-surface-container-lowest rounded-xl shadow-ambient-1 border border-outline-variant overflow-hidden hover:shadow-md transition-shadow cursor-pointer">
+<div class="w-1/3 bg-surface-variant">
+<div class="bg-cover bg-center w-full h-full min-h-[120px]" data-alt="An abstract, premium digital graphic illustrating the concept of compound interest. A geometric curve sweeping exponentially upward, composed of glowing blue nodes against a pristine white background. High-tech, clean, educational aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCPliTDXozpqAVBqOlIH0X8TxdRm7G0bbNaaoZS9O87JWUIwLJG0aetq3UclkYhKvMBsHXKXljbnA-xzBFCBhmxX92rjVqlB2gYORtSyPLk9sb3OpN7O37FNzTFaxqh43LTiMYCPZqI4VcvAJTScI-aG9MI92lmyce7X49GZM32B8IWXnc8Ikwo0Ex-ANGblGufJ6CWsHuA3sTpg9LJosRnHki6JySj7WSoMnTLuFeb8D24Jee5KNkHyg')"></div>
+</div>
+<div class="w-2/3 p-md flex flex-col justify-center">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wide mb-xs">Module 2</span>
+<h4 class="font-headline-sm text-body-lg font-bold text-on-surface mb-xs">Compound Interest</h4>
+<p class="font-body-sm text-label-md text-on-surface-variant font-normal line-clamp-2">Discover the mathematical engine behind long-term wealth generation and early starting advantages.</p>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
