@@ -1,27 +1,48 @@
 import os
+import sys
 import logging
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 
+# Ensure project root and backend dir are in sys.path for all environments
+_current_dir = os.path.dirname(os.path.abspath(__file__))
+_parent_dir = os.path.dirname(_current_dir)
+for p in [_parent_dir, _current_dir]:
+    if p not in sys.path:
+        sys.path.insert(0, p)
+
 # Load env variables
-load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
+load_dotenv(os.path.join(_current_dir, ".env"))
+load_dotenv(os.path.join(_parent_dir, ".env"))
 
 # Import database & seed helpers
-from backend.database import connect_to_mongo, close_mongo_connection, get_db
-from backend.seed_data import seed_database_if_empty
+try:
+    from backend.database import connect_to_mongo, close_mongo_connection, get_db
+    from backend.seed_data import seed_database_if_empty
+    from backend.routes.profiles import router as profiles_router
+    from backend.routes.opportunities import router as opportunities_router
+    from backend.routes.applications import router as applications_router
+    from backend.routes.weekly_plan import router as weekly_plan_router
+    from backend.routes.careers import router as careers_router
+    from backend.routes.notifications import router as notifications_router
+    from backend.routes.billing import router as billing_router
+    from backend.routes.ai_assistant import router as ai_router
+    from backend.routes.admin import router as admin_router
+except ModuleNotFoundError:
+    from database import connect_to_mongo, close_mongo_connection, get_db
+    from seed_data import seed_database_if_empty
+    from routes.profiles import router as profiles_router
+    from routes.opportunities import router as opportunities_router
+    from routes.applications import router as applications_router
+    from routes.weekly_plan import router as weekly_plan_router
+    from routes.careers import router as careers_router
+    from routes.notifications import router as notifications_router
+    from routes.billing import router as billing_router
+    from routes.ai_assistant import router as ai_router
+    from routes.admin import router as admin_router
 
-# Import API Routers
-from backend.routes.profiles import router as profiles_router
-from backend.routes.opportunities import router as opportunities_router
-from backend.routes.applications import router as applications_router
-from backend.routes.weekly_plan import router as weekly_plan_router
-from backend.routes.careers import router as careers_router
-from backend.routes.notifications import router as notifications_router
-from backend.routes.billing import router as billing_router
-from backend.routes.ai_assistant import router as ai_router
-from backend.routes.admin import router as admin_router
 
 # Configure logging
 logging.basicConfig(
