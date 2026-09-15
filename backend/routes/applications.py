@@ -2,14 +2,24 @@ from fastapi import APIRouter, HTTPException, Query
 from typing import List, Optional
 from datetime import datetime
 import time
-from backend.database import get_collection
-from backend.models.application import (
-    Application,
-    ApplicationCreate,
-    ApplicationStageUpdate,
-    ApplicationNotesUpdate
-)
+try:
+    from backend.database import get_collection
+    from backend.models.application import (
+        Application,
+        ApplicationCreate,
+        ApplicationStageUpdate,
+        ApplicationNotesUpdate
+    )
+except ModuleNotFoundError:
+    from database import get_collection
+    from models.application import (
+        Application,
+        ApplicationCreate,
+        ApplicationStageUpdate,
+        ApplicationNotesUpdate
+    )
 import logging
+
 
 router = APIRouter(prefix="/api/applications", tags=["Applications"])
 logger = logging.getLogger("nexora_applications")

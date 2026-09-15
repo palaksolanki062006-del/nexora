@@ -1,6 +1,10 @@
 from fastapi import APIRouter, HTTPException
-from backend.database import get_collection
+try:
+    from backend.database import get_collection
+except ModuleNotFoundError:
+    from database import get_collection
 import logging
+
 
 router = APIRouter(prefix="/api/admin", tags=["Admin & Analytics"])
 logger = logging.getLogger("nexora_admin")

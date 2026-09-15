@@ -1,8 +1,13 @@
 from fastapi import APIRouter, HTTPException, Query
 from typing import List, Optional
-from backend.database import get_collection
-from backend.models.career import CareerPath, CareerComparisonRequest
+try:
+    from backend.database import get_collection
+    from backend.models.career import CareerPath, CareerComparisonRequest
+except ModuleNotFoundError:
+    from database import get_collection
+    from models.career import CareerPath, CareerComparisonRequest
 import logging
+
 
 router = APIRouter(prefix="/api/careers", tags=["Careers"])
 logger = logging.getLogger("nexora_careers")

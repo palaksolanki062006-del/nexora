@@ -1,9 +1,14 @@
 from fastapi import APIRouter, HTTPException, Query
 from typing import List, Optional
 import time
-from backend.database import get_collection
-from backend.models.weekly_plan import WeeklyTask, WeeklyTaskCreate, WeeklyTaskUpdate
+try:
+    from backend.database import get_collection
+    from backend.models.weekly_plan import WeeklyTask, WeeklyTaskCreate, WeeklyTaskUpdate
+except ModuleNotFoundError:
+    from database import get_collection
+    from models.weekly_plan import WeeklyTask, WeeklyTaskCreate, WeeklyTaskUpdate
 import logging
+
 
 router = APIRouter(prefix="/api/weekly-plan", tags=["Weekly Plan"])
 logger = logging.getLogger("nexora_weekly")

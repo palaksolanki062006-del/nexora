@@ -7,9 +7,13 @@ if sys.platform == "win32":
     sys.stdout.reconfigure(encoding="utf-8")
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+try:
+    from backend.database import connect_to_mongo, get_db, close_mongo_connection
+    from backend.seed_data import seed_database_if_empty
+except ModuleNotFoundError:
+    from database import connect_to_mongo, get_db, close_mongo_connection
+    from seed_data import seed_database_if_empty
 
-from backend.database import connect_to_mongo, get_db, close_mongo_connection
-from backend.seed_data import seed_database_if_empty
 
 async def test_mongo():
     print("Connecting to MongoDB Atlas...")

@@ -1,8 +1,13 @@
 from fastapi import APIRouter, HTTPException, Query
 from typing import List, Optional
-from backend.database import get_collection
-from backend.models.opportunity import Opportunity, OpportunityRejectRequest
+try:
+    from backend.database import get_collection
+    from backend.models.opportunity import Opportunity, OpportunityRejectRequest
+except ModuleNotFoundError:
+    from database import get_collection
+    from models.opportunity import Opportunity, OpportunityRejectRequest
 import logging
+
 
 router = APIRouter(prefix="/api/opportunities", tags=["Opportunities"])
 logger = logging.getLogger("nexora_opportunities")

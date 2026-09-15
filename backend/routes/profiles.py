@@ -1,8 +1,13 @@
 from fastapi import APIRouter, HTTPException, Query
 from typing import List, Optional
-from backend.database import get_collection
-from backend.models.profile import UserProfile, UserProfileUpdate
+try:
+    from backend.database import get_collection
+    from backend.models.profile import UserProfile, UserProfileUpdate
+except ModuleNotFoundError:
+    from database import get_collection
+    from models.profile import UserProfile, UserProfileUpdate
 import logging
+
 
 router = APIRouter(prefix="/api/profiles", tags=["Profiles"])
 logger = logging.getLogger("nexora_profiles")

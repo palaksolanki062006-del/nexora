@@ -1,7 +1,11 @@
 import logging
-from backend.database import get_db
+try:
+    from backend.database import get_db
+except ModuleNotFoundError:
+    from database import get_db
 
 logger = logging.getLogger("nexora_seed")
+
 
 PERSONA_PRESETS = [
     {

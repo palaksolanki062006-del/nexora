@@ -2,9 +2,14 @@ from fastapi import APIRouter, HTTPException
 from typing import List
 from datetime import datetime
 import random
-from backend.database import get_collection
-from backend.models.billing import InvoiceItem, SubscriptionUpgradeRequest, SubscriptionStatus
+try:
+    from backend.database import get_collection
+    from backend.models.billing import InvoiceItem, SubscriptionUpgradeRequest, SubscriptionStatus
+except ModuleNotFoundError:
+    from database import get_collection
+    from models.billing import InvoiceItem, SubscriptionUpgradeRequest, SubscriptionStatus
 import logging
+
 
 router = APIRouter(prefix="/api/billing", tags=["Billing & Pro Subscription"])
 logger = logging.getLogger("nexora_billing")

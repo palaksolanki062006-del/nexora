@@ -1,7 +1,12 @@
 from fastapi import APIRouter, HTTPException
-from backend.database import get_collection
-from backend.models.ai import ChatRequest, ChatResponse, ChatAction
+try:
+    from backend.database import get_collection
+    from backend.models.ai import ChatRequest, ChatResponse, ChatAction
+except ModuleNotFoundError:
+    from database import get_collection
+    from models.ai import ChatRequest, ChatResponse, ChatAction
 import logging
+
 
 router = APIRouter(prefix="/api/ai", tags=["AI Assistant"])
 logger = logging.getLogger("nexora_ai")

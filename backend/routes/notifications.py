@@ -1,8 +1,13 @@
 from fastapi import APIRouter, HTTPException
 from typing import List
-from backend.database import get_collection
-from backend.models.notification import NotificationItem
+try:
+    from backend.database import get_collection
+    from backend.models.notification import NotificationItem
+except ModuleNotFoundError:
+    from database import get_collection
+    from models.notification import NotificationItem
 import logging
+
 
 router = APIRouter(prefix="/api/notifications", tags=["Notifications"])
 logger = logging.getLogger("nexora_notifications")
